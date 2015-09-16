@@ -1,0 +1,60 @@
+<?
+$aMenuLinks = Array(
+	Array(
+		"Компания", 
+		"/company/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Услуги", 
+		"/services/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Ремонт помещений", 
+		"/remont-komnat/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Виды ремонта", 
+		"/vid-remonta/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Проекты", 
+		"/projects/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Цены", 
+		"/contacts/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Акции", 
+		"/info/stock/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Контакты", 
+		"/contacts/", 
+		Array(), 
+		Array(), 
+		"" 
+	)
+);
+?>

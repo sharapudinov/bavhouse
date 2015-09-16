@@ -1,0 +1,1 @@
+your.skype.ru

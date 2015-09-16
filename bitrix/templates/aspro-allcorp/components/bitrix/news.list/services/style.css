@@ -1,0 +1,23 @@
+
+@media (min-width: 1200px) {
+    hr.adaptive {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    hr.adaptive {
+        display: block;
+    }
+}
+@media (min-width: 1200px) {
+    hr.adaptive2 {
+        display: block;
+    }
+}
+
+@media (max-width: 1200px) {
+    hr.adaptive2 {
+        display: none;
+    }
+}
