@@ -1,5 +1,11 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();?>
+<?$this->setFrameMode(true);?>
 <div class="project detail">
+	<?// element name?>
+	<?if($arParams["DISPLAY_NAME"] != "N" && strlen($arResult["NAME"])):?>
+		<h2><?=$arResult["NAME"]?></h2>
+	<?endif;?>
+	
 	<div class="row">
 		<?if($arResult["GALLERY"]){?>
 			<div class="col-md-6 item_slider">
@@ -49,49 +55,48 @@
 				<?}?>
 			</div>
 		<?}?>
-		<div class="col-md-6 content">
-			<?if( $arResult["DETAIL_TEXT"] ){?>
-				<div class="detail">
-					<h5 class="title"><?=GetMessage("TITLE_DETAIL")?></h5>
-					<?=$arResult["DETAIL_TEXT"];?>
-				</div>
-			<?}?>
-			<?if( $arResult["CHARACTERISTICS"] ){?>
-				<div class="props">
-					<h6 class="title"><?=GetMessage("TITLE_PROP")?></h6>
-					<div class="wrap">
-						<table>
-							<?foreach( $arResult["CHARACTERISTICS"] as $arProp){?>
-								<tr class="prop">
-									<td class="title"><div><?=$arProp["NAME"]?>:</div></td>
-									<td class="value">
-										<div>
-											<?if(count($arProp["VALUE"])>1){
-												foreach($arProp["VALUE"] as $key => $value) { if ($arProp["VALUE"][$key+1]) {echo $value.", ";} else {echo $value;} }} 
-											else{ 
-												if( $arProp["CODE"] == "SITE" ){?>
-													<a href="<?=$arProp["VALUE"];?>" target="_blank" rel="nofollow"><?=$arProp["VALUE"];?></a>
-												<?}else{
-													echo $arProp["VALUE"]; 
-												}
+		<?if( $arResult["CHARACTERISTICS"] ){?>
+			<div class="col-md-6 props">
+				<h6 class="title"><?=GetMessage("TITLE_PROP")?></h6>
+				<div class="wrap">
+					<table>
+						<?foreach( $arResult["CHARACTERISTICS"] as $arProp){?>
+							<tr class="prop">
+								<td class="title"><div><?=$arProp["NAME"]?>:</div></td>
+								<td class="value">
+									<div>
+										<?if(count($arProp["VALUE"]) > 1){
+											foreach($arProp["VALUE"] as $key => $value) { if ($arProp["VALUE"][$key+1]) {echo $value.", ";} else {echo $value;} }} 
+										else{ 
+											if($arProp["CODE"] == "SITE"){?>
+												<!--noindex-->
+												<a href="<?=$arProp["VALUE"];?>" target="_blank" rel="nofollow"><?=$arProp["VALUE"];?></a>
+												<!--/noindex-->
+											<?}else{
+												echo $arProp["VALUE"]; 
 											}
-											?>
-										</div>
-									</td>
-								</tr>
-							<?}?>
-						</table>
-					</div>
+										}
+										?>
+									</div>
+								</td>
+							</tr>
+						<?}?>
+					</table>
 				</div>
-			<?}?>
-			
-		</div>
+			</div>
+		<?}?>
+		<?if( $arResult["DETAIL_TEXT"] ){?>
+			<div class="detail">
+				<h6 class="title"><?=GetMessage("TITLE_DETAIL")?></h6>
+				<div class="text"><?=$arResult["DETAIL_TEXT"];?></div>
+			</div>
+		<?}?>
 	</div>
 	<?if($arResult["PROPERTIES"]["FORM_PROJECT"]["VALUE_XML_ID"]=="YES"){?>
 		<div class="styled-block project">
 			<div class="row">
 				<div class="col-md-3 col-sm-3 valign">
-					<span class="btn btn-primary btn-sm" data-event="jqm" data-param-id="17" data-param-captcha="yes" data-name="project" data-product="<?=$arResult["NAME"]?>"><span><?=GetMessage("TO_CALL")?></span></span>
+					<span class="btn btn-primary btn-sm" data-event="jqm" data-param-id="<?=CCache::$arIBlocks[SITE_ID]["aspro_allcorp_form"]["aspro_allcorp_order_project"][0]?>" data-autoload-project="<?=$arResult["NAME"]?>" data-name="project"><span><?=GetMessage("TO_CALL")?></span></span>
 				</div>
 				<div class="col-md-9 col-sm-9 valign">
 					<div class="right">
@@ -100,7 +105,7 @@
 							 "",
 							 Array(
 								  "AREA_FILE_SHOW" => "file",
-								  "PATH" => "/include/ask_project.php",
+								  "PATH" => SITE_DIR."include/ask_project.php",
 								  "EDIT_TEMPLATE" => ""
 							 )
 						);?>
@@ -113,15 +118,24 @@
 		<div class="col-md-6 back">
 			<a href="<?=$arResult["LIST_PAGE_URL"];?>" title="<?=GetMessage("BACK")?>" ><i class="icon icon-chevron-left bg"></i><?=GetMessage("BACK")?></a>
 		</div>
-		<div class="col-md-6 share text-right">
-			<span class="text"><?=GetMessage("SHARE_TEXT")?></span>
-			<script type="text/javascript" src="//yandex.st/share/share.js"
-			charset="utf-8"></script>
-			<span class="yashare-auto-init" data-yashareL10n="ru"
-			 data-yashareType="none" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir"></span>
-		</div>
+		<?if($arParams['USE_SHARE'] == 'Y'):?>
+			<div class="col-md-6 text-right share">
+				<span class="text"><?=GetMessage('SHARE_TEXT')?></span>
+				<script type="text/javascript">
+				$(document).ready(function() {
+					var script = document.createElement('script');
+					script.type = 'text/javascript';
+					script.src = '//yandex.st/share/share.js';
+					$('.detail').append(script);
+				});
+				</script>
+				<?/*<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>*/?>
+				<span class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir"></span>
+			</div>
+		<?endif;?>
 	</div>
 	
+	<?// projects links?>
 	<?if($arResult["PROJECTS"]["ITEMS"]){?>
 		<hr/>
 		<div class="wraps nomargin">

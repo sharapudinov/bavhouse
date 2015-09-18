@@ -19,6 +19,7 @@ $MESS["IMAGE_POSITION_BOTTOM"] = "Снизу";
 $MESS["T_SORT_PROP"] = "Доступные поля для сортировки";
 $MESS["T_SORT_PROP_DEFAULT"] = "Сортировка по умолчанию";
 $MESS["V_NAME"] = "Наименование";
+$MESS["V_SORT"] = "Популярность (индекс сортировки)";
 $MESS["T_VIEWS"] = "Вид отображения элементов раздела";
 $MESS["V_TABLE"] = "Таблицей";
 $MESS["V_LIST"] = "Списком";

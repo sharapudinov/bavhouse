@@ -1,4 +1,10 @@
 <?if( !defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true ) die();?>
+<?$this->setFrameMode(true);?>
+<?
+// get element
+$arItemFilter = CAllCorp::GetCurrentElementFilter($arResult["VARIABLES"], $arParams);
+$arElement = CCache::CIblockElement_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag($arParams["IBLOCK_ID"]), "MULTI" => "N")), $arItemFilter, false, false, array("ID", "IBLOCK_SECTION_ID", "PROPERTY_LINK_PROJECTS"));
+?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.detail",
 	"projects",
@@ -21,6 +27,7 @@
 		"SET_STATUS_404" => $arParams["SET_STATUS_404"],
 		"INCLUDE_IBLOCK_INTO_CHAIN" => $arParams["INCLUDE_IBLOCK_INTO_CHAIN"],
 		"ADD_SECTIONS_CHAIN" => $arParams["ADD_SECTIONS_CHAIN"],
+		"ADD_ELEMENT_CHAIN" => $arParams["ADD_ELEMENT_CHAIN"],
 		"ACTIVE_DATE_FORMAT" => $arParams["DETAIL_ACTIVE_DATE_FORMAT"],
 		"CACHE_TYPE" => $arParams["CACHE_TYPE"],
 		"CACHE_TIME" => $arParams["CACHE_TIME"],
@@ -30,7 +37,7 @@
 		"DISPLAY_TOP_PAGER" => $arParams["DETAIL_DISPLAY_TOP_PAGER"],
 		"DISPLAY_BOTTOM_PAGER" => $arParams["DETAIL_DISPLAY_BOTTOM_PAGER"],
 		"PAGER_TITLE" => $arParams["DETAIL_PAGER_TITLE"],
-		"PAGER_SHOW_ALWAYS" => "N",
+		"PAGER_SHOW_ALWAYS" => $arParams["PAGER_SHOW_ALWAYS"],
 		"PAGER_TEMPLATE" => $arParams["DETAIL_PAGER_TEMPLATE"],
 		"PAGER_SHOW_ALL" => $arParams["DETAIL_PAGER_SHOW_ALL"],
 		"CHECK_DATES" => $arParams["CHECK_DATES"],
@@ -46,4 +53,8 @@
 	),
 	$component
 );?>
-<a href="<?=$arResult["FOLDER"].$arResult["URL_TEMPLATES"]["news"]?>"><?=GetMessage("T_NEWS_DETAIL_BACK")?></a>
+<?
+if(is_array($arElement["IBLOCK_SECTION_ID"]) && count($arElement["IBLOCK_SECTION_ID"]) > 1){
+	CAllCorp::CheckAdditionalChainInMultiLevel($arResult, $arParams, $arElement);
+}
+?>

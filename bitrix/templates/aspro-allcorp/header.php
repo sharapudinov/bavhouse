@@ -208,6 +208,7 @@
             </div>
         </div>
     </div>
+    <div class="header-zaglushka"></div>
     <header class="<?= ($arTheme["MENU"] == "first" ? "menu-type-1" : "menu-type-2") ?>">
         <div class="container maxwidth-theme">
             <div class="row">
@@ -302,7 +303,7 @@
                                             "MENU_CACHE_GET_VARS"   => [
                                             ],
                                             "MAX_LEVEL"             => "3",
-                                            "CHILD_MENU_TYPE"       => "left",
+                                            "CHILD_MENU_TYPE"       => "top_child",
                                             "USE_EXT"               => "Y",
                                             "DELAY"                 => "N",
                                             "ALLOW_MULTI_SELECT"    => "N",

@@ -1,4 +1,5 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();?>
+<?$this->setFrameMode(true);?>
 <div class="item-views <?=$arParams["VIEW_TYPE"]?> <?=($arParams["SHOW_TABS"] == "Y" ? "with_tabs" : "")?> <?=($arParams["IMAGE_POSITION"] ? "image_".$arParams["IMAGE_POSITION"] : "")?> <?=($templateName = $component->{"__parent"}->{"__template"}->{"__name"})?>">
 	<?// top pagination?>
 	<?if($arParams["DISPLAY_TOP_PAGER"]):?>
@@ -105,7 +106,9 @@
 															<?$val = $arProperty["DISPLAY_VALUE"];?>
 														<?endif;?>
 														<?if($PCODE == "SITE"):?>
-															<?=str_replace("href=", "target='_blank' href=", $val);?>
+															<!--noindex-->
+															<?=str_replace("href=", "rel='nofollow' target='_blank' href=", $val);?>
+															<!--/noindex-->
 														<?elseif($PCODE == "EMAIL"):?>
 															<a href="mailto:<?=$val?>"><?=$val?></a>
 														<?else:?>
@@ -116,7 +119,7 @@
 											<?endforeach;?>
 										</div>
 									<?endif;?>
-									<button class="btn btn-primary" data-event="jqm" data-name="resume" data-param-id="20" data-autoload-POST="<?=$arItem["NAME"]?>" data-autohide=""><?=GetMessage("BUTTON")?></button>
+									<button class="btn btn-primary" data-event="jqm" data-name="resume" data-param-id="<?=CCache::$arIBlocks[SITE_ID]["aspro_allcorp_form"]["aspro_allcorp_resume"][0]?>" data-autoload-POST="<?=$arItem["NAME"]?>" data-autohide=""><?=GetMessage("BUTTON")?></button>
 								<?$textPart = ob_get_clean();?>
 								
 								<?if($bPreviewPicture):?>
@@ -199,7 +202,7 @@
 							var templateName = '<?=$templateName?>';
 							$(document).ready(function(){
 								setTimeout(function(){
-									$(".table." + templateName + " .row.sid-<?=$arSection["ID"]?> .image").sliceHeight({slice: <?=$arParams["COUNT_IN_LINE"]?>});
+									$(".table." + templateName + " .row.sid-<?=$arSection["ID"]?> .image").sliceHeight({slice: <?=$arParams["COUNT_IN_LINE"]?>, lineheight:-3});
 									$(".table." + templateName + " .row.sid-<?=$arSection["ID"]?> .text").sliceHeight({slice: <?=$arParams["COUNT_IN_LINE"]?>});
 								}, 500)
 							})

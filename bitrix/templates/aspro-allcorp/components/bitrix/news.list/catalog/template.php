@@ -1,26 +1,22 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();?>
-
-
-<?if($arResult["ITEMS"]):?>
-	<?
-	
-	
-	
-	if( $arParams["DISPLAY"] == 'table'){
-		$arParams["VIEW_TYPE"] = "table";
-		$isList = false;
-		$arParams["COUNT_IN_LINE"] = ($arParams["COUNT_IN_LINE"] ? $arParams["COUNT_IN_LINE"] : '3');
-	}elseif( $arParams["DISPLAY"] == 'list'){
-		$isList = true;
-		$arParams["VIEW_TYPE"] = "list";
-	} elseif( $arParams["DISPLAY"] == 'price'){
-		$isList = true;
-	}	
-		
-	?>
-	
-	
-	<div class="catalog group tabs item-views <?=$arParams["VIEW_TYPE"]?>">
+<?
+if($arParams["DISPLAY"] == 'table'){
+	$arParams["VIEW_TYPE"] = "table";
+	$isList = false;
+	$arParams["COUNT_IN_LINE"] = ($arParams["COUNT_IN_LINE"] ? $arParams["COUNT_IN_LINE"] : '3');
+}elseif($arParams["DISPLAY"] == 'list'){
+	$isList = true;
+	$arParams["VIEW_TYPE"] = "list";
+}elseif($arParams["DISPLAY"] == 'price'){
+	$isList = true;
+}	
+?>
+<?
+$frame = $this->createFrame()->begin();
+$frame->setAnimation(true);
+?>
+<div class="catalog group tabs item-views <?=$arParams["VIEW_TYPE"]?>">
+	<?if($arResult["ITEMS"]):?>
 		<?if( $arParams["DISPLAY_TOP_PAGER"] ){?>
 			<?=$arResult["NAV_STRING"]?>
 		<?}?>
@@ -107,7 +103,7 @@
 										<a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="btn btn-<?=($isList ? 'default grey' : 'primary')?> btn-sm"><?=GetMessage("TO_ALL")?></a>
 									<?}
 									if($isList){?>
-										<a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="btn btn-primary btn-sm" data-event="jqm" data-param-id="18" data-name="order_product" data-product="<?=$arItem["NAME"]?>"><?=GetMessage("TO_ORDER")?></a>
+										<a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="btn btn-primary btn-sm" data-event="jqm" data-param-id="<?=CCache::$arIBlocks[SITE_ID]["aspro_allcorp_form"]["aspro_allcorp_order_product"][0]?>" data-product="<?=$arItem["NAME"]?>" data-name="order_product"><?=GetMessage("TO_ORDER")?></a>
 									<?}
 									if($isList){?>
 											</div>
@@ -213,15 +209,14 @@
 		<?if( $arParams["DISPLAY_BOTTOM_PAGER"] ){?>
 			<?=$arResult["NAV_STRING"]?>
 		<?}?>
-		
-		<?// section description?>
-		<?if(is_array($arResult["SECTION"]["PATH"])):?>
-			<?$arCurSectionPath = end($arResult["SECTION"]["PATH"]);?>
-			<?if(strlen($arCurSectionPath["DESCRIPTION"]) && strpos($_SERVER["REQUEST_URI"], "PAGEN") === false):?>
-				<div class="cat-desc"><?=$arCurSectionPath["DESCRIPTION"]?></div>
-			<?endif;?>
+	<?endif;?>
+	
+	<?// section description?>
+	<?if(is_array($arResult["SECTION"]["PATH"])):?>
+		<?$arCurSectionPath = end($arResult["SECTION"]["PATH"]);?>
+		<?if(strlen($arCurSectionPath["DESCRIPTION"]) && strpos($_SERVER["REQUEST_URI"], "PAGEN") === false):?>
+			<div class="cat-desc"><?=$arCurSectionPath["DESCRIPTION"]?></div>
 		<?endif;?>
-	</div>
-<?else:?>
-	<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/no_catalog_items.php"), true);?>
-<?endif;?>
+	<?endif;?>
+</div>
+<?$frame->end();?>

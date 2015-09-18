@@ -1,4 +1,5 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();?>
+<?$this->setFrameMode(true);?>
 <?if($arResult["SECTIONS"]):?>
 	<div class="item-views services groups tabs sections <?=$arParams["VIEW_TYPE"]?> <?=($arParams["SHOW_TABS"] == "Y" ? "with_tabs" : "")?> <?=($arParams["IMAGE_POSITION"] ? "image_".$arParams["IMAGE_POSITION"] : "")?> <?=($templateName = $component->{"__parent"}->{"__template"}->{"__name"})?>">
 		<?// top pagination?>
@@ -82,7 +83,7 @@
 				var templateName = '<?=$templateName?>';
 				$(document).ready(function(){
 					setTimeout(function(){
-						$(".sections." + templateName + " .row .image").sliceHeight({slice: <?=$size?>});
+						$(".sections." + templateName + " .row .image").sliceHeight({slice: <?=$size?>, lineheight:-3});
 						$(".sections." + templateName + " .row .text").sliceHeight({slice: <?=$size?>});
 					}, 500)
 				})

@@ -80,13 +80,13 @@ footer .menu li a:hover {
   border-bottom-color: #1eae3c;
 }
 .small-banner .row > div:nth-child(3n+1) .banner {
-  background-color: #1ca138;
+  background-color: none;
 }
 .small-banner .row > div:nth-child(4n+2) .banner {
-  background-color: #188b30;
+  background-color: none;
 }
 .small-banner .row > div:nth-child(5n+3) .banner {
-  background-color: #147528;
+  background-color: none;
 }
 .uploader:hover .action {
   background-color: #1eae3c;
@@ -136,8 +136,13 @@ table.table th {
 .tp-bullets .bullet:hover {
   background: #188b30 !important;
 }
+
 .feature-box .feature-box-icon {
-  background-color: #188b30;
+  border: 2px solid #188B30;
+}
+
+.feature-box .feature-box-icon:hover {
+  background-color: #188B30;
 }
 .tabs.item-views.table .title,
 .history.item-views.table .title {

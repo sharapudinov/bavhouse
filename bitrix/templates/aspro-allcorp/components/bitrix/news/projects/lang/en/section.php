@@ -1,3 +1,4 @@
 <?
-$MESS ['SEARCH_LABEL'] = "Search:";
+$MESS["SECTION_EMPTY"] = "Нет проектов";
+$MESS["SECTION_NOTFOUND"] = "Раздел не найден";
 ?>

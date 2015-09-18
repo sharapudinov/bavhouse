@@ -1,7 +1,10 @@
 <?if( !defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true ) die();?>
+<?$this->setFrameMode(true);?>
 <?
 $arParams["COLUMN_COUNT"] = intval(($arParams["COLUMN_COUNT"] < 1 ? 1 : ($arParams["COLUMN_COUNT"] > 4 ? 4 : $arParams["COLUMN_COUNT"])));
 $colmd = intval(12 / $arParams["COLUMN_COUNT"]);
+	$colsm =$colmd*2;
+	$colxs=$colsm;
 ?>
 <div class="feature">
 	<div class="row">
@@ -11,13 +14,13 @@ $colmd = intval(12 / $arParams["COLUMN_COUNT"]);
 				</div>
 				<div class="row">
 			<?endif;?>
-			<div class="col-md-<?=$colmd?>">
+			<div class="col-md-<?=$colmd?> col-sm-<?=$colsm?> col-xs-<?=$colxs?>">
 				<?
 				// edit/add/delete buttons for edit mode
 				$this->AddEditAction($arItem["ID"], $arItem["EDIT_LINK"], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
 				$this->AddDeleteAction($arItem["ID"], $arItem["DELETE_LINK"], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage("CT_BNL_ELEMENT_DELETE_CONFIRM")));
 				?>
-				<div class="feature-box" id="<?=$this->GetEditAreaId($arItem['ID'])?>">
+				<a href="<?=$arItem["DISPLAY_PROPERTIES"]["LINK"]["VALUE"]?>" class="feature-box" id="<?=$this->GetEditAreaId($arItem['ID'])?>">
 					<?// icon or preview picture?>
 					<?if($arItem["DISPLAY_PROPERTIES"]["ICON"]["VALUE"] || $arItem["FIELDS"]["PREVIEW_PICTURE"]):?>
 						<?if($arItem["FIELDS"]["PREVIEW_PICTURE"]):?>
@@ -36,7 +39,7 @@ $colmd = intval(12 / $arParams["COLUMN_COUNT"]);
 						<?if(strlen($arItem["FIELDS"]["NAME"])):?>
 							<div class="title">
 								<?if($arItem["DISPLAY_PROPERTIES"]["LINK"]["VALUE"]):?>
-									<a href="<?=$arItem["DISPLAY_PROPERTIES"]["LINK"]["VALUE"]?>"><?=$arItem["NAME"]?></a>
+									<?=$arItem["NAME"]?>
 								<?else:?>
 									<span><?=$arItem["NAME"]?></span>
 								<?endif;?>
@@ -52,7 +55,7 @@ $colmd = intval(12 / $arParams["COLUMN_COUNT"]);
 							<?endif;?>
 						<?endif;?>
 					</div>
-				</div>
+				</a>
 			</div>
 			<?++$i;?>
 		<?endforeach;?>

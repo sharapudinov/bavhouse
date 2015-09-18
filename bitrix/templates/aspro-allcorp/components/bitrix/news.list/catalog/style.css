@@ -64,7 +64,7 @@ span.zoom{ right: -15px; bottom: -15px; }
 .catalog.group .group-content .item .text_info .description{border-top: 1px solid #d7dee3; padding-top: 15px; margin-top: 15px; color: #666666; margin-bottom: 25px;}
 .catalog.group .group-content .item .text_info .title{font-size:15px; font-weight:400; line-height:15px; margin-bottom:3px;}
 .catalog.group.list .group-content .item .text_info .section_name{color:#9aa7af; margin-bottom: 0px;}
-.catalog.group.list .group-content .item .text_info .bottom{border-top: 1px solid #d7dee3; margin-top: 15px; padding: 15px 15px 5px; background: rgba(223, 229, 233, 0.3);}
+.catalog.group.list .group-content .item .text_info .bottom{border-top: 1px solid #d7dee3; margin-top: 15px; padding: 5px 15px 5px; background: rgba(223, 229, 233, 0.3);}
 .catalog.group.list .group-content .item .image{padding: 15px 0px 15px 15px;}
 .catalog.group.item-views.list .group-content .item{padding-bottom:0px;}
 .catalog.group.item-views.list .group-content .item .image:hover{border:0px;}

@@ -1,3 +1,4 @@
+.bx-mac .mega-menu table, .bx-ios .mega-menu table{max-width:inherit;}
 header.menu-type-1{ height: 90px; padding: 30px 0; }
 header.menu-type-1 > .container{ margin-bottom: -34px; }
 header.menu-type-2{ height: 112px; padding-bottom: 22px; }
@@ -8,7 +9,7 @@ header.menu-type-2 + .main .slider-container .container{ padding-top: 20px; }
 header.menu-type-1 .mega-menu table{ border: 0; font-size: 14px; line-height: 14px; border-radius: 3px; margin: 0 -5px; }
 header.menu-type-1 .mega-menu table{ border-collapse: separate; border-spacing: 5px 0; }
 header.menu-type-2 .mega-menu table{ border-collapse: collapse; border-spacing: 0; }
-.mega-menu table td{ padding: 0; text-align: center; }
+.mega-menu table td{ padding: 0; text-align: center;/* visibility: hidden;*/}
 .mega-menu table a{ display: inline-block; width: 100%; }
 .mega-menu table td:first-child > a{ border-top-left-radius: 3px; border-bottom-left-radius: 3px; }
 .mega-menu table td:last-child > a{ border-top-right-radius: 3px; border-bottom-right-radius: 3px; }
@@ -57,9 +58,9 @@ header.menu-type-1 .mega-menu table .dropdown:hover .dropdown-menu a{ background
 
 .mega-menu .dropdown-submenu{ position: relative; }
 .mega-menu .dropdown-submenu > a:after{ display: block; font-family: FontAwesome; content: "\f105"; right:10px; position: absolute; top:50%; margin:-9px; }
+.mega-menu ul.nav .dropdown-submenu > a:after{display:none;}
 header.menu-type-2 .mega-menu .dropdown-submenu > a:hover:after{ color: white; }
-header.menu-type-1 .mega-menu .dropdown-submenu > a:after{ margin-right: 0; }
-header.menu-type-2 .mega-menu .dropdown-submenu > a:after{ margin-right: -5px; }
+.mega-menu .dropdown-submenu > a:after{ margin-right: 0; }
 
 header.menu-type-2 .mega-menu table .dropdown-submenu .dropdown-menu:after{ display: none; }
 
@@ -67,7 +68,7 @@ header.menu-type-2 .mega-menu table .dropdown-submenu .dropdown-menu:after{ disp
 header.menu-type-1 .mega-menu table .dropdown-submenu .dropdown-menu{ border-radius: 0 2px 2px 2px; }
 header.menu-type-2 .mega-menu table .dropdown-submenu .dropdown-menu{ border-radius: 6px; }
 .mega-menu table td:last-child .dropdown-menu .dropdown-menu{ right: auto; left: -100%; margin: 0; }
-.mega-menu table .dropdown-submenu:hover .dropdown-menu{ display: block; }
+.mega-menu table .dropdown-submenu:hover > .dropdown-menu{ display: block; }
 
 header.menu-type-2 .mega-menu table .more-items{ height: 44px; line-height: 37px; }
 .mega-menu table .more-items > span{ height: 14px; line-height: 0; display: inline-block; letter-spacing: -4px; font-size: 50px; right: 2px; position: relative; }

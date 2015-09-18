@@ -1,5 +1,10 @@
 <?if( !defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true ) die();?>
-
+<?$this->setFrameMode(true);?>
+<?
+// get element
+$arItemFilter = CAllCorp::GetCurrentElementFilter($arResult["VARIABLES"], $arParams);
+$arElement = CCache::CIblockElement_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag($arParams["IBLOCK_ID"]), "MULTI" => "N")), $arItemFilter, false, false, array("ID", "IBLOCK_SECTION_ID", "PROPERTY_LINK_PROJECTS"));
+?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.detail",
 	"catalog",
@@ -22,6 +27,7 @@
 		"SET_STATUS_404" => $arParams["SET_STATUS_404"],
 		"INCLUDE_IBLOCK_INTO_CHAIN" => $arParams["INCLUDE_IBLOCK_INTO_CHAIN"],
 		"ADD_SECTIONS_CHAIN" => $arParams["ADD_SECTIONS_CHAIN"],
+		"ADD_ELEMENT_CHAIN" => $arParams["ADD_ELEMENT_CHAIN"],
 		"ACTIVE_DATE_FORMAT" => $arParams["DETAIL_ACTIVE_DATE_FORMAT"],
 		"CACHE_TYPE" => $arParams["CACHE_TYPE"],
 		"CACHE_TIME" => $arParams["CACHE_TIME"],

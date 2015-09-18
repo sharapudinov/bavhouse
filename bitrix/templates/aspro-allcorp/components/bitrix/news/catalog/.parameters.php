@@ -4,6 +4,7 @@
 $rsProp = CIBlockProperty::GetList(Array("sort"=>"asc", "name"=>"asc"), Array("ACTIVE"=>"Y", "IBLOCK_ID"=>(isset($arCurrentValues["IBLOCK_ID"])?$arCurrentValues["IBLOCK_ID"]:$arCurrentValues["ID"])));
 $arPropertySort=array();
 $arPropertySort["name"] = GetMessage('V_NAME');
+$arPropertySort["sort"] = GetMessage('V_SORT');
 while ($arr=$rsProp->Fetch())
 {
 	$arPropertySort[$arr["CODE"]] = $arr["NAME"];
@@ -54,7 +55,7 @@ $arTemplateParameters = array(
 		"DEFAULT" => "Y",
 	),
 	"SORT_PROP" => array(
-		"PARENT" => "LIST_SETTINGS",
+		"PARENT" => "DATA_SOURCE",
 		"NAME" => GetMessage('T_SORT_PROP'),
 		"TYPE" => "LIST",
 		"VALUES" => $arPropertySort,
@@ -62,13 +63,13 @@ $arTemplateParameters = array(
 		"MULTIPLE" => "Y"
 	),
 	"SORT_PROP_DEFAULT" => array(
-		"PARENT" => "LIST_SETTINGS",
+		"PARENT" => "DATA_SOURCE",
 		"NAME" => GetMessage('T_SORT_PROP_DEFAULT'),
 		"TYPE" => "LIST",
 		"VALUES" => $arPropertySort
 	),
 	"SORT_DIRECTION" => array(
-		"PARENT" => "LIST_SETTINGS",
+		"PARENT" => "DATA_SOURCE",
 		"NAME" => GetMessage('T_SORT_DIRECTION'),
 		"TYPE" => "LIST",
 		"VALUES" => $arSortDirection

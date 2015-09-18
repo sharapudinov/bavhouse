@@ -1,4 +1,5 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();?>
+<?$this->setFrameMode(true);?>
 <div class="item-views list <?=($arParams["IMAGE_POSITION"] ? "image_".$arParams["IMAGE_POSITION"] : "")?> <?=($templateName = $component->{"__parent"}->{"__template"}->{"__name"})?>">
 	<?// top pagination?>
 	<?if($arParams["DISPLAY_TOP_PAGER"]):?>
@@ -78,7 +79,9 @@
 										<?$val = $arProperty["DISPLAY_VALUE"];?>
 									<?endif;?>
 									<?if($PCODE == "SITE"):?>
-										<?=str_replace("href=", "target='_blank' href=", $val);?>
+										<!--noindex-->
+										<?=str_replace("href=", "rel='nofollow' target='_blank' href=", $val);?>
+										<!--/noindex-->
 									<?elseif($PCODE == "EMAIL"):?>
 										<a href="mailto:<?=$val?>"><?=$val?></a>
 									<?else:?>

@@ -5,7 +5,7 @@ $(document).ready(function(){
 		animationLoop: false,
 		slideshow: false,
 		itemWidth: 130,
-		itemMargin: 5,
+		itemMargin: 10,
 		asNavFor: '#slider'
 	});
    
@@ -20,7 +20,9 @@ $(document).ready(function(){
 	setTimeout(function(th){
 		$('#slider.flexslider li').each(function(){
 			var height = $(this).parent().height();
-			$(this).css('line-height', height + 'px');
+			if(height > 3){
+				$(this).css('line-height', (height - 3) + 'px');
+			}
 		})
 	},100);
 })

@@ -1,4 +1,5 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();?>
+<?$this->setFrameMode(true);?>
 <div class="item-views list <?=($arParams["IMAGE_POSITION"] ? "image_".$arParams["IMAGE_POSITION"] : "")?> <?=($templateName = $component->{"__parent"}->{"__template"}->{"__name"})?>">
 	<?// top pagination?>
 	<?if($arParams["DISPLAY_TOP_PAGER"]):?>
@@ -40,7 +41,7 @@
 			<?// element display properties?>
 			<?if($arItem["DISPLAY_PROPERTIES"]):?>
 				<div class="properties">
-					<?foreach($arItem["DISPLAY_PROPERTIES"] as $PID => $arProperty):?>
+					<?foreach($arItem["DISPLAY_PROPERTIES"] as $PCODE => $arProperty):?>
 						<div class="property">
 							<?if($arProperty["XML_ID"]):?>
 								<i class="icon <?=$arProperty["XML_ID"]?>"></i>&nbsp;
@@ -52,7 +53,11 @@
 							<?else:?>
 								<?$val = $arProperty["DISPLAY_VALUE"];?>
 							<?endif;?>
-							<?if($PCODE == "EMAIL"):?>
+							<?if($PCODE == "SITE"):?>
+								<!--noindex-->
+								<?=str_replace("href=", "rel='nofollow' target='_blank' href=", $val);?>
+								<!--/noindex-->
+							<?elseif($PCODE == "EMAIL"):?>
 								<a href="mailto:<?=$val?>"><?=$val?></a>
 							<?else:?>
 								<?=$val?>

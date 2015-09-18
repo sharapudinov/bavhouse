@@ -1,4 +1,5 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();?>
+<?$this->setFrameMode(true);?>
 <div class="item-views <?=$arParams["VIEW_TYPE"]?> <?=($arParams["SHOW_TABS"] == "Y" ? "with_tabs" : "")?> <?=($arParams["IMAGE_POSITION"] ? "image_".$arParams["IMAGE_POSITION"] : "")?> <?=($templateName = $component->{"__parent"}->{"__template"}->{"__name"})?>">
 	<?// top pagination?>
 	<?if($arParams["DISPLAY_TOP_PAGER"]):?>
@@ -127,7 +128,9 @@
 														<?$val = $arProperty["DISPLAY_VALUE"];?>
 													<?endif;?>
 													<?if($PCODE == "SITE"):?>
-														<?=str_replace("href=", "target='_blank' href=", $val);?>
+														<!--noindex-->
+														<?=str_replace("href=", "rel='nofollow' target='_blank' href=", $val);?>
+														<!--/noindex-->
 													<?elseif($PCODE == "EMAIL"):?>
 														<a href="mailto:<?=$val?>"><?=$val?></a>
 													<?else:?>
@@ -237,7 +240,7 @@
 							var templateName = '<?=$templateName?>';
 							$(document).ready(function(){
 								setTimeout(function(){
-									$(".table." + templateName + " .row.sid-<?=$arSection["ID"]?> .image").sliceHeight({slice: <?=$arParams["COUNT_IN_LINE"]?>});
+									$(".table." + templateName + " .row.sid-<?=$arSection["ID"]?> .image").sliceHeight({slice: <?=$arParams["COUNT_IN_LINE"]?>, lineheight:-3});
 									$(".table." + templateName + " .row.sid-<?=$arSection["ID"]?> .text").sliceHeight({slice: <?=$arParams["COUNT_IN_LINE"]?>});
 								}, 500)
 							})

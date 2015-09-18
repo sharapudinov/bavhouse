@@ -1,17 +1,9 @@
 <?if( !defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true ) die();?>
+<?$this->setFrameMode(true);?>
 <?
-// geting element properties (links)
-$arElementFilter = array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "INCLUDE_SUBSECTIONS" => "Y");
-if($arParams["CHECK_DATES"] == "Y"){
-	$arElementFilter = array_merge($arElementFilter, array("ACTIVE" => "Y", "GLOBAL_ACTIVE" => "Y", "ACTIVE_DATE" => "Y"));
-}
-if($arResult["VARIABLES"]["ELEMENT_ID"]){
-	$arElementFilter["ID"] = $arResult["VARIABLES"]["ELEMENT_ID"];
-
-}elseif($arResult["VARIABLES"]["ELEMENT_CODE"]){
-	$arElementFilter["CODE"] = $arResult["VARIABLES"]["ELEMENT_CODE"];
-}
-$arElement = CCache::CIblockElement_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag($arParams["IBLOCK_ID"]), "MULTI" => "N")), $arElementFilter, false, false, array("ID", "PROPERTY_LINK_PROJECTS", "PROPERTY_LINK_GOODS", "PROPERTY_LINK_REVIEWS", "PROPERTY_LINK_STAFF", "PROPERTY_LINK_SERVICES"));
+// get element
+$arItemFilter = CAllCorp::GetCurrentElementFilter($arResult["VARIABLES"], $arParams);
+$arElement = CCache::CIblockElement_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag($arParams["IBLOCK_ID"]), "MULTI" => "N")), $arItemFilter, false, false, array("ID", "NAME", "IBLOCK_SECTION_ID", "DETAIL_PAGE_URL", "LIST_PAGE_URL", "PROPERTY_LINK_PROJECTS", "PROPERTY_LINK_GOODS", "PROPERTY_LINK_REVIEWS", "PROPERTY_LINK_STAFF", "PROPERTY_LINK_SERVICES"));
 ?>
 <div class="detail <?=($templateName = $component->{"__template"}->{"__name"})?>">
 	<?$APPLICATION->IncludeComponent(
@@ -36,6 +28,7 @@ $arElement = CCache::CIblockElement_GetList(array("CACHE" => array("TAG" => CCac
 			"SET_STATUS_404" => $arParams["SET_STATUS_404"],
 			"INCLUDE_IBLOCK_INTO_CHAIN" => $arParams["INCLUDE_IBLOCK_INTO_CHAIN"],
 			"ADD_SECTIONS_CHAIN" => $arParams["ADD_SECTIONS_CHAIN"],
+			"ADD_ELEMENT_CHAIN" => $arParams["ADD_ELEMENT_CHAIN"],
 			"ACTIVE_DATE_FORMAT" => $arParams["DETAIL_ACTIVE_DATE_FORMAT"],
 			"CACHE_TYPE" => $arParams["CACHE_TYPE"],
 			"CACHE_TIME" => $arParams["CACHE_TIME"],
@@ -61,7 +54,7 @@ $arElement = CCache::CIblockElement_GetList(array("CACHE" => array("TAG" => CCac
 		),
 		$component
 	);?>
-	
+
 	<?// projects links?>
 	<?if(in_array("LINK_PROJECTS", $arParams["DETAIL_PROPERTY_CODE"]) && $arElement["PROPERTY_LINK_PROJECTS_VALUE"]):?>
 		<?$arProjects = CCache::CIBlockElement_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag(CCache::$arIBlocks[SITE_ID]["aspro_allcorp_content"]["aspro_allcorp_projects"][0]), "MULTI" => "Y")), array("ID" => $arElement["PROPERTY_LINK_PROJECTS_VALUE"], "ACTIVE" => "Y", "GLOBAL_ACTIVE" => "Y", "ACTIVE_DATE" => "Y"), false, false, array("ID", "NAME", "DETAIL_PAGE_URL", "PREVIEW_PICTURE", "DETAIL_PICTURE"));?>
@@ -92,8 +85,8 @@ $arElement = CCache::CIblockElement_GetList(array("CACHE" => array("TAG" => CCac
 		$(document).ready(function(){
 			if($(document).width() > 980){
 				setTimeout(function(){
-					$('.detail.services .row .projects img').sliceHeight({ slice: 3 });
-					$('.detail.services .row .projects .projects').sliceHeight({ slice: 3 });
+					$('.detail.services .row.projects img').sliceHeight({ slice: 3 });
+					$('.detail.services .row.projects .text').sliceHeight({ slice: 3 });
 				}, 100)
 			}
 		});
@@ -108,7 +101,7 @@ $arElement = CCache::CIblockElement_GetList(array("CACHE" => array("TAG" => CCac
 			<div class="row reviews">
 				<?$count = count($arRevies);?>
 				<?foreach($arRevies as $arReview):?>
-					<div class="col-md-<?=($count == 1 ? '12' : '6')?> col-sm-<?=($count == 1 ? '12' : '6')?>">
+					<div class="col-md-12">
 						<div class="item">
 							<div class="review">
 								<div class="row">
@@ -337,4 +330,9 @@ $arElement = CCache::CIblockElement_GetList(array("CACHE" => array("TAG" => CCac
 		</div>
 	<?endif;?>
 </div>
+<?
+if(is_array($arElement["IBLOCK_SECTION_ID"]) && count($arElement["IBLOCK_SECTION_ID"]) > 1){
+	CAllCorp::CheckAdditionalChainInMultiLevel($arResult, $arParams, $arElement);
+}
+?>
 <a class="back-url" href="<?=$arResult["FOLDER"].$arResult["URL_TEMPLATES"]["news"]?>"><i class="icon icon-share"></i><?=GetMessage("BACK_LINK")?></a>

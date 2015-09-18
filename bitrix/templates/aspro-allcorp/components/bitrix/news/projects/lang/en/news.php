@@ -1,3 +1,4 @@
 <?
-$MESS ['SEARCH_LABEL'] = "Search:";
+$MESS['SEARCH_LABEL'] = "Поиск:";
+$MESS["SECTION_EMPTY"] = "Нет проектов";
 ?>

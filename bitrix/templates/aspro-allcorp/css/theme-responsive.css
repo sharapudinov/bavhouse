@@ -69,9 +69,8 @@
 	div.slider > ul > li > div.center-caption {
 		margin-left: 0 !important;
 	}
-	
 	.project.detail .valign { margin-bottom: 10px; }
-
+	.display-type, .ordering-wrap {float:none !important;text-align:left;}
 }
 
 @media (max-width: 479px) {

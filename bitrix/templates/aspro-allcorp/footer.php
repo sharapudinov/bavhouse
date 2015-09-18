@@ -5,7 +5,7 @@
 							<div class="col-md-12">
 								<?$APPLICATION->IncludeComponent("bitrix:news.list", "front-partners", array(
 									"IBLOCK_TYPE" => "aspro_allcorp_content",
-									"IBLOCK_ID" => "5",
+									"IBLOCK_ID" => CCache::$arIBlocks[SITE_ID]["aspro_allcorp_content"]["aspro_allcorp_partners"][0],
 									"NEWS_COUNT" => "20",
 									"SORT_BY1" => "ACTIVE_FROM",
 									"SORT_ORDER1" => "DESC",
@@ -59,13 +59,12 @@
 						</div>
 					</div>
 				<?endif;?>
-				<?if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']))
-					die();?>
-				<?if($isMenu && $theme["SIDEMENU"] == "left"):?>
+				<?CAllCorp::checkRestartBuffer();?>
+				<?if($isMenu && $arTheme["SIDEMENU"] == "left"):?>
 						</div>
 					</div>
 				<?endif;?>
-				<?if($isMenu && $theme["SIDEMENU"] == "right"):?>
+				<?if($isMenu && $arTheme["SIDEMENU"] == "right"):?>
 						</div>
 						<div class="col-md-3 right-menu-md">
 							<aside class="sidebar">
@@ -86,7 +85,8 @@
 								);?>
 							</aside>
 							<div class="sidearea">
-								<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => "/include/under_sidebar.php"), false);?>
+								<?$APPLICATION->ShowViewContent('under_sidebar_content');?>
+								<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/under_sidebar.php"), false);?>
 							</div>
 						</div>
 					</div>
@@ -103,13 +103,13 @@
 				<div class="row">
 					<div class="col-md-3">
 						<div class="copy">
-							<?$APPLICATION->IncludeFile("/include/copy.php", Array(), Array(
+							<?$APPLICATION->IncludeFile(SITE_DIR."include/copy.php", Array(), Array(
 									"MODE"      => "html",
 									"NAME"      => "Copyright",
 								)
 							);?>
 							<br /><br />
-							<?$APPLICATION->IncludeFile("/include/site-address.php", Array(), Array(
+							<?$APPLICATION->IncludeFile(SITE_DIR."include/site-address.php", Array(), Array(
 									"MODE"      => "html",
 									"NAME"      => "Address",
 								)
@@ -141,7 +141,7 @@
 						<div class="info">
 							<div class="email">
 								<i class="icon icon-envelope"></i>
-								<?$APPLICATION->IncludeFile("/include/site-email.php", array(), array(
+								<?$APPLICATION->IncludeFile(SITE_DIR."include/site-email.php", array(), array(
 										"MODE" => "html",
 										"NAME" => "E-mail",
 									)
@@ -149,7 +149,7 @@
 							</div>
 							<div class="phone">
 								<i class="icon icon-phone"></i> 
-								<?$APPLICATION->IncludeFile("/include/site-phone.php", array(), array(
+								<?$APPLICATION->IncludeFile(SITE_DIR."include/site-phone.php", array(), array(
 										"MODE" => "html",
 										"NAME" => "Phone",
 									)
@@ -157,7 +157,7 @@
 							</div>
 							<div class="skype">
 								<i class="icon icon-skype"></i>
-								<?$APPLICATION->IncludeFile("/include/site-skype.php", array(), array(
+								<?$APPLICATION->IncludeFile(SITE_DIR."include/site-skype.php", array(), array(
 										"MODE" => "html",
 										"NAME" => "Skype",
 									)
@@ -166,25 +166,16 @@
 						</div>
 					</div>
 				</div>
+				<div id="bx-composite-banner"></div>
 			</div>
 		</footer>
-		<?$APPLICATION->IncludeFile("/include/invis-counter.php", Array(), Array(
-				"MODE" => "text",
-				"NAME" => "Counters place for Yandex.Metrika, Google.Analytics",
-			)
-		);?>
-		<?if(!CSite::inDir(SITE_DIR."index.php")){
-			if(!strlen($title = $APPLICATION->GetPageProperty('title'))){
-				$title = $APPLICATION->GetTitle();
-			}
-			$APPLICATION->AddChainItem($title);
-			$APPLICATION->SetPageProperty("title", $title.($arSite['SITE_NAME'] ? ' - ' : '' ).$arSite['SITE_NAME']);
-		}
-		else{
-			if(!strlen($title = $APPLICATION->GetPageProperty('title'))){
-				$title =  $APPLICATION->GetTitle();
-			}
-			$APPLICATION->SetPageProperty("title", $arSite['SITE_NAME'].($arSite['SITE_NAME'] ? ' - ' : '' ).$title);
-		}?>
+		<div class="bx_areas">
+			<?$APPLICATION->IncludeFile(SITE_DIR."include/invis-counter.php", Array(), Array(
+					"MODE" => "text",
+					"NAME" => "Counters place for Yandex.Metrika, Google.Analytics",
+				)
+			);?>
+		</div>
+		<?CAllCorp::SetSeoMetaTitle();?>
 	</body>
 </html>

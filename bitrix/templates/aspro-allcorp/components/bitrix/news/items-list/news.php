@@ -1,9 +1,7 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
+<?$this->setFrameMode(true);?>
 <?
-$arItemFilter = array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "INCLUDE_SUBSECTIONS" => "Y");
-if($arParams["CHECK_DATES"] == "Y"){
-	$arItemFilter = array_merge($arItemFilter, array("ACTIVE" => "Y", "SECTION_GLOBAL_ACTIVE" => "Y", "ACTIVE_DATE" => "Y"));
-}
+$arItemFilter = CAllCorp::GetIBlockAllElementsFilter($arParams);
 $itemsCnt = CCache::CIblockElement_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag($arParams["IBLOCK_ID"]))), $arItemFilter, array());
 ?>
 <?if(!$itemsCnt):?>

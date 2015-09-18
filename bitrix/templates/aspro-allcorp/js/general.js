@@ -390,4 +390,15 @@ $(document).ready(function(){
 	});
 
 
+	header_offset=$('header').offset().top
+	/*fiixed block*/
+	$(window).scroll(function(){
+		if(window.pageYOffset>=header_offset){
+			$('header').addClass('fixed');
+			$('.header-zaglushka').show();
+		} else {
+			$('.header-zaglushka').hide();
+			$('header').removeClass('fixed');
+		}
+	})
 })

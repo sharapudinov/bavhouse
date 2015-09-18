@@ -1,4 +1,5 @@
 <?if( !defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true ) die();?>
+<?$this->setFrameMode(true);?>
 <?
 if($arParams["DISPLAY_PICTURE"] != "N"){
 	$arPicture = ($arResult["FIELDS"]["DETAIL_PICTURE"] ? $arResult["FIELDS"]["DETAIL_PICTURE"] : $arResult["FIELDS"]["PREVIEW_PICTURE"]);
@@ -62,21 +63,25 @@ if($arParams["DISPLAY_PICTURE"] != "N"){
 			<?endif;?>
 			<div class="content">
 				<?// text?>
-				<?if($arResult["PREVIEW_TEXT_TYPE"] == "text"):?>
-					<p><?=$arResult["FIELDS"]["PREVIEW_TEXT"];?></p>
-				<?else:?>
-					<?=$arResult["FIELDS"]["PREVIEW_TEXT"];?>
-				<?endif;?>
-				<?if($arResult["DETAIL_TEXT_TYPE"] == "text"):?>
-					<p><?=$arResult["FIELDS"]["DETAIL_TEXT"];?></p>
-				<?else:?>
-					<?=$arResult["FIELDS"]["DETAIL_TEXT"];?>
+				<?if(strlen($arResult["FIELDS"]["PREVIEW_TEXT"].$arResult["FIELDS"]["DETAIL_TEXT"])):?>
+					<div class="text">
+						<?if($arResult["PREVIEW_TEXT_TYPE"] == "text"):?>
+							<p><?=$arResult["FIELDS"]["PREVIEW_TEXT"];?></p>
+						<?else:?>
+							<?=$arResult["FIELDS"]["PREVIEW_TEXT"];?>
+						<?endif;?>
+						<?if($arResult["DETAIL_TEXT_TYPE"] == "text"):?>
+							<p><?=$arResult["FIELDS"]["DETAIL_TEXT"];?></p>
+						<?else:?>
+							<?=$arResult["FIELDS"]["DETAIL_TEXT"];?>
+						<?endif;?>
+					</div>
 				<?endif;?>
 				
 				<?// display properties?>
 				<?if($arResult["DISPLAY_PROPERTIES"]):?>
 					<div class="properties">
-						<?foreach($arResult["DISPLAY_PROPERTIES"] as $PID => $arProperty):?>
+						<?foreach($arResult["DISPLAY_PROPERTIES"] as $PCODE => $arProperty):?>
 							<div class="property">
 								<?if($arProperty["XML_ID"]):?>
 									<i class="icon <?=$arProperty["XML_ID"]?>"></i>&nbsp;
@@ -89,7 +94,9 @@ if($arParams["DISPLAY_PICTURE"] != "N"){
 									<?$val = $arProperty["DISPLAY_VALUE"];?>
 								<?endif;?>
 								<?if($PCODE == "SITE"):?>
-									<?=str_replace("href=", "target='_blank' href=", $val);?>
+									<!--noindex-->
+									<?=str_replace("href=", "rel='nofollow' target='_blank' href=", $val);?>
+									<!--/noindex-->
 								<?elseif($PCODE == "EMAIL"):?>
 									<a href="mailto:<?=$val?>"><?=$val?></a>
 								<?else:?>

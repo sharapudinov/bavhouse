@@ -15,21 +15,7 @@ $aMenuLinks = Array(
 		"" 
 	),
 	Array(
-		"Ремонт помещений", 
-		"/remont-komnat/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Виды ремонта", 
-		"/vid-remonta/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Проекты", 
+		"Наши работы", 
 		"/projects/", 
 		Array(), 
 		Array(), 

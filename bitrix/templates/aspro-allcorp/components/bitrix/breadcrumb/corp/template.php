@@ -1,14 +1,24 @@
-<?if( !defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true ) die();
+<?
+if( !defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true ) die();
 
 if( empty( $arResult ) )
 	return "";
 
-$strReturn = '<ul class="breadcrumb">';
+$arItemLast = array();	
+foreach($arResult as $index => $arItem){
+	if($index && $arItem["LINK"] == $arItemLast["LINK"]){
+		unset($arResult[$index]);
+	}
+	else{
+		$arItemLast = $arItem;
+	}
+}
 
-for( $index = 0, $itemSize = count($arResult); $index < $itemSize; $index++ ){
-	$title = htmlspecialcharsex($arResult[$index]["TITLE"]);
-	if( $arResult[$index]["LINK"] <> "" && $arResult[$index]['LINK'] != GetPagePath() && $arResult[$index]['LINK']."index.php" != GetPagePath())
-		$strReturn .= '<li><a href="'.$arResult[$index]["LINK"].'" title="'.$title.'">'.$title.'</a></li>';
+$strReturn = '<ul class="breadcrumb">';
+foreach($arResult as $arItem){
+	$title = htmlspecialcharsex($arItem["TITLE"]);
+	if( $arItem["LINK"] <> "" && $arItem['LINK'] != GetPagePath() && $arItem['LINK']."index.php" != GetPagePath())
+		$strReturn .= '<li><a href="'.$arItem["LINK"].'" title="'.$title.'">'.$title.'</a></li>';
 	else{
 		$strReturn .= '<li class="active">'.$title.'</li>';
 		break;
@@ -16,4 +26,5 @@ for( $index = 0, $itemSize = count($arResult); $index < $itemSize; $index++ ){
 }
 
 $strReturn .= '</ul>';
-return $strReturn;?>
+return $strReturn;
+?>

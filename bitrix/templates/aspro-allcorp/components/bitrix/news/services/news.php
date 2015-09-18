@@ -1,24 +1,21 @@
 <?if( !defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true ) die();?>
+<?$this->setFrameMode(true);?>
 <?// intro text?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:main.include",
 	"",
 	Array(
 		"AREA_FILE_SHOW" => "file",
-		"PATH" => "/include/services.php",
+		"PATH" => SITE_DIR."include/services.php",
 		"EDIT_TEMPLATE" => ""
 	)
 );?>
 <?
-// geting section items count and subsections 
-$arSubSectionFilter = array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "SECTION_ID" => false, "INCLUDE_SUBSECTIONS" => "N", "DEPTH_LEVEL" => "1");
-$arItemFilter = array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "INCLUDE_SUBSECTIONS" => "N", "SECTION_ID" => 0);
-if($arParams["CHECK_DATES"] == "Y"){
-	$arSubSectionFilter = array_merge($arSubSectionFilter, array("ACTIVE" => "Y", "ACTIVE_DATE" => "Y"));
-	$arItemFilter = array_merge($arItemFilter, array("ACTIVE" => "Y", "ACTIVE_DATE" => "Y"));
-}
-$itemsCnt = CCache::CIblockElement_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag($arParams["IBLOCK_ID"]))), $arItemFilter, array());
-$arSubSections = CCache::CIblockSection_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag($arParams["IBLOCK_ID"]), "MULTI" => "Y")), $arSubSectionFilter, false, array("ID"));
+// get section items count and subsections 
+$arItemFilter = CAllCorp::GetCurrentSectionElementFilter($arResult["VARIABLES"], $arParams, false);
+$arSubSectionFilter = CAllCorp::GetCurrentSectionSubSectionFilter($arResult["VARIABLES"], $arParams, false);
+$itemsCnt = CCache::CIBlockElement_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag($arParams["IBLOCK_ID"]))), $arItemFilter, array());
+$arSubSections = CCache::CIBlockSection_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag($arParams["IBLOCK_ID"]), "MULTI" => "Y")), $arSubSectionFilter, false, array("ID"));
 ?>
 <?if(!$itemsCnt && !$arSubSections):?>
 	<div class="alert alert-warning"><?=GetMessage("SECTION_EMPTY")?></div>

@@ -1,24 +1,13 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
+<?$this->setFrameMode(true);?>
 <?
 // geting section items count and section [ID, NAME]
-$arSectionFilter = array("IBLOCK_ID" => $arParams["IBLOCK_ID"]);
-$arItemFilter = array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "INCLUDE_SUBSECTIONS" => "N");
-if($arParams["CHECK_DATES"] == "Y"){
-	$arSectionFilter = array_merge($arSectionFilter, array("ACTIVE" => "Y", "GLOBAL_ACTIVE" => "Y", "ACTIVE_DATE" => "Y"));
-	$arItemFilter = array_merge($arSectionFilter, array("ACTIVE" => "Y", "SECTION_GLOBAL_ACTIVE" => "Y", "ACTIVE_DATE" => "Y"));
-}
-if($arResult["VARIABLES"]["SECTION_ID"]){
-	$arSectionFilter["ID"] = $arResult["VARIABLES"]["SECTION_ID"];
-	$arItemFilter["SECTION_ID"] = $arResult["VARIABLES"]["SECTION_ID"];
-	
-}elseif($arResult["VARIABLES"]["SECTION_CODE"]){
-	$arSectionFilter["CODE"] = $arResult["VARIABLES"]["SECTION_CODE"];
-	$arItemFilter["SECTION_CODE"] = $arResult["VARIABLES"]["SECTION_CODE"];
-}
+$arItemFilter = CAllCorp::GetCurrentSectionElementFilter($arResult["VARIABLES"], $arParams);
+$arSectionFilter = CAllCorp::GetCurrentSectionFilter($arResult["VARIABLES"], $arParams);
 $itemsCnt = CCache::CIblockElement_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag($arParams["IBLOCK_ID"]))), $arItemFilter, array());
-$arSection = CCache::CIblockSection_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag($arParams["IBLOCK_ID"]), "MULTI" => "N")), $arSectionFilter, false, array("ID", "NAME"), true);
+$SectionID = CCache::CIblockSection_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag($arParams["IBLOCK_ID"]), "MULTI" => "N", "RESULT" => array("ID"))), $arSectionFilter, false, array("ID"), true);
 ?>
-<?if(!$arSection):?>
+<?if(!$SectionID):?>
 	<div class="alert alert-warning"><?=GetMessage("SECTION_NOTFOUND")?></div>
 <?else:?>
 	<?if(!$itemsCnt):?>

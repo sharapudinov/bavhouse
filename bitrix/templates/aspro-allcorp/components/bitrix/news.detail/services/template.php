@@ -1,4 +1,5 @@
 <?if( !defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true ) die();?>
+<?$this->setFrameMode(true);?>
 <?// element name?>
 <?if($arParams["DISPLAY_NAME"] != "N" && strlen($arResult["NAME"])):?>
 	<h2><?=$arResult["NAME"]?></h2>
@@ -25,12 +26,12 @@
 					 "",
 					 Array(
 						  "AREA_FILE_SHOW" => "file",
-						  "PATH" => "/include/ask_question.php",
+						  "PATH" => SITE_DIR."include/ask_question.php",
 						  "EDIT_TEMPLATE" => ""
 					 )
 				);?>
 			</div>
-			<span class="btn btn-primary btn-sm" data-event="jqm" data-param-id="21" data-name="question"><span><?=GetMessage("S_ASK_QUESTION")?></span></span>
+			<span class="btn btn-primary btn-sm" data-event="jqm" data-param-id="<?=CCache::$arIBlocks[SITE_ID]["aspro_allcorp_form"]["aspro_allcorp_question"][0]?>" data-autoload-need_product="<?=$arResult["NAME"]?>" data-name="question"><span><?=GetMessage("S_ASK_QUESTION")?></span></span>
 		</div>
 	</div>
 <?endif;?>
@@ -73,7 +74,7 @@
 	<div class="styled-block">
 		<div class="row">
 			<div class="col-md-3 col-sm-3 col-xs-5 valign">
-				<span class="btn btn-primary btn-sm" data-event="jqm" data-param-id="19" data-name="services" data-autoload-service="<?=$arResult["NAME"]?>"><span><?=GetMessage("S_ORDER_SERVISE")?></span></span>
+				<span class="btn btn-primary btn-sm" data-event="jqm" data-param-id="<?=CCache::$arIBlocks[SITE_ID]["aspro_allcorp_form"]["aspro_allcorp_order_services"][0]?>" data-autoload-service="<?=$arResult["NAME"]?>" data-name="services"><span><?=GetMessage("S_ORDER_SERVISE")?></span></span>
 			</div>
 			<div class="col-md-9 col-sm-9 col-xs-7 valign">
 				<div class="right">
@@ -82,13 +83,45 @@
 						"",
 						Array(
 							"AREA_FILE_SHOW" => "file",
-							"PATH" => "/include/ask_services.php",
+							"PATH" => SITE_DIR."include/ask_services.php",
 							"EDIT_TEMPLATE" => ""
 						)
 					);?>
 				</div>
 			</div>
 		</div>
+	</div>
+<?endif;?>
+
+<?// display properties?>
+<?$arDisplayPropertiesCodes = array_diff(array_keys($arResult["DISPLAY_PROPERTIES"]), array('PERIOD', 'PHOTOS', 'DOCUMENTS', 'LINK_GOODS', 'LINK_STAFF', 'LINK_REVIEWS', 'LINK_PROJECTS', 'LINK_SERVICES', 'FORM_ORDER', 'FORM_QUESTION', 'PHOTOPOS'));?>
+<?if($arResult["DISPLAY_PROPERTIES"] && $arDisplayPropertiesCodes):?>
+	<div class="properties">
+		<?foreach($arResult["DISPLAY_PROPERTIES"] as $PCODE => $arProperty):?>
+			<?if(in_array($PCODE, $arDisplayPropertiesCodes)):?>
+				<div class="property">
+					<?if($arProperty["XML_ID"]):?>
+						<i class="icon <?=$arProperty["XML_ID"]?>"></i>&nbsp;
+					<?else:?>
+						<?=$arProperty["NAME"]?>:&nbsp;
+					<?endif;?>
+					<?if(is_array($arProperty["DISPLAY_VALUE"])):?>
+						<?$val = implode("&nbsp;/&nbsp;", $arProperty["DISPLAY_VALUE"]);?>
+					<?else:?>
+						<?$val = $arProperty["DISPLAY_VALUE"];?>
+					<?endif;?>
+					<?if($PCODE == "SITE"):?>
+						<!--noindex-->
+						<?=str_replace("href=", "rel='nofollow' target='_blank' href=", $val);?>
+						<!--/noindex-->
+					<?elseif($PCODE == "EMAIL"):?>
+						<a href="mailto:<?=$val?>"><?=$val?></a>
+					<?else:?>
+						<?=$val?>
+					<?endif;?>
+				</div>
+			<?endif;?>
+		<?endforeach;?>
 	</div>
 <?endif;?>
 

@@ -1,17 +1,9 @@
 <?if( !defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true ) die();?>
+<?$this->setFrameMode(true);?>
 <?
-// geting element properties (links)
-$arElementFilter = array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "INCLUDE_SUBSECTIONS" => "Y");
-if($arParams["CHECK_DATES"] == "Y"){
-	$arElementFilter = array_merge($arElementFilter, array("ACTIVE" => "Y", "GLOBAL_ACTIVE" => "Y", "ACTIVE_DATE" => "Y"));
-}
-if($arResult["VARIABLES"]["ELEMENT_ID"]){
-	$arElementFilter["ID"] = $arResult["VARIABLES"]["ELEMENT_ID"];
-
-}elseif($arResult["VARIABLES"]["ELEMENT_CODE"]){
-	$arElementFilter["CODE"] = $arResult["VARIABLES"]["ELEMENT_CODE"];
-}
-$arElement = CCache::CIblockElement_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag($arParams["IBLOCK_ID"]), "MULTI" => "N")), $arElementFilter, false, false, array("ID", "PROPERTY_LINK_PROJECTS", "PROPERTY_LINK_GOODS", "PROPERTY_LINK_REVIEWS", "PROPERTY_LINK_STAFF", "PROPERTY_LINK_SERVICES"));
+// get element
+$arItemFilter = CAllCorp::GetCurrentElementFilter($arResult["VARIABLES"], $arParams);
+$arElement = CCache::CIblockElement_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag($arParams["IBLOCK_ID"]), "MULTI" => "N")), $arItemFilter, false, false, array("ID", "IBLOCK_SECTION_ID", "PROPERTY_LINK_PROJECTS", "PROPERTY_LINK_GOODS", "PROPERTY_LINK_REVIEWS", "PROPERTY_LINK_STAFF", "PROPERTY_LINK_SERVICES"));
 ?>
 <div class="detail <?=($templateName = $component->{"__template"}->{"__name"})?>">
 	<?$APPLICATION->IncludeComponent(
@@ -36,6 +28,7 @@ $arElement = CCache::CIblockElement_GetList(array("CACHE" => array("TAG" => CCac
 			"SET_STATUS_404" => $arParams["SET_STATUS_404"],
 			"INCLUDE_IBLOCK_INTO_CHAIN" => $arParams["INCLUDE_IBLOCK_INTO_CHAIN"],
 			"ADD_SECTIONS_CHAIN" => $arParams["ADD_SECTIONS_CHAIN"],
+			"ADD_ELEMENT_CHAIN" => $arParams["ADD_ELEMENT_CHAIN"],
 			"ACTIVE_DATE_FORMAT" => $arParams["DETAIL_ACTIVE_DATE_FORMAT"],
 			"CACHE_TYPE" => $arParams["CACHE_TYPE"],
 			"CACHE_TIME" => $arParams["CACHE_TIME"],
@@ -193,4 +186,10 @@ $arElement = CCache::CIblockElement_GetList(array("CACHE" => array("TAG" => CCac
 		</div>
 	<?endif;?>
 </div>
+<?
+if(is_array($arElement["IBLOCK_SECTION_ID"]) && count($arElement["IBLOCK_SECTION_ID"]) > 1){
+	CAllCorp::CheckAdditionalChainInMultiLevel($arResult, $arParams, $arElement);
+}
+?>
+<div style="clear:both"></div>
 <a class="back-url" href="<?=$arResult["FOLDER"].$arResult["URL_TEMPLATES"]["news"]?>"><i class="icon icon-share"></i><?=GetMessage("BACK_LINK")?></a>

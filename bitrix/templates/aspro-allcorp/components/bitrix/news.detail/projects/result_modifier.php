@@ -4,7 +4,7 @@ if( $arParams["DISPLAY_PICTURE"] != "N" ){
 		$arResult["GALLERY"][] = array(
 			"DETAIL" => $arResult["DETAIL_PICTURE"],
 			"PREVIEW" => CFile::ResizeImageGet( $arResult["DETAIL_PICTURE"] , array('width' => 1000, 'height' => 1000), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, true ),
-			"THUMB" => CFile::ResizeImageGet( $arResult["DETAIL_PICTURE"] , array('width' => 250, 'height' => 150), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, true ),
+			"THUMB" => CFile::ResizeImageGet( $arResult["DETAIL_PICTURE"] , array('width' => 126, 'height' => 86), BX_RESIZE_IMAGE_EXACT, true ),
 			"TITLE" => $arResult["DETAIL_PICTURE"]
 		);
 	}
@@ -14,7 +14,7 @@ if( $arParams["DISPLAY_PICTURE"] != "N" ){
 			$arResult["GALLERY"][] = array(
 				"DETAIL" => CFile::GetFileArray( $img ),
 				"PREVIEW" => CFile::ResizeImageGet( $img, array('width' => 1000, 'height' => 1000), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, true ),
-				"THUMB" => CFile::ResizeImageGet( $img , array('width' => 250, 'height' => 150), BX_RESIZE_IMAGE_EXACT, true ),
+				"THUMB" => CFile::ResizeImageGet( $img , array('width' => 126, 'height' => 86), BX_RESIZE_IMAGE_EXACT, true ),
 				"TITLE" => CFile::GetFileArray( $img )
 			);
 		}
@@ -30,11 +30,10 @@ if( $arResult['SECTION_NAME'] ){
 if($arResult["DISPLAY_PROPERTIES"] ){
 	
 	foreach( $arResult["DISPLAY_PROPERTIES"] as $arProp ){
-		if (($arProp["CODE"]!="PHOTOS")){
-			if( !empty( $arProp["VALUE"] ) ){
+		if(!in_array($arProp["CODE"], array("PHOTOS", "FORM_PROJECT", "LINK_PROJECTS"))){
+			if(strlen($arProp["VALUE"]) || $arProp["VALUE"]){
 				if( $arProp["CODE"] == "DATE" ){
 					$arProp["VALUE"] = CIBlockFormatProperties::DateFormat($arParams["ACTIVE_DATE_FORMAT"], MakeTimeStamp($arProp["VALUE"], CSite::GetDateFormat()));
-					$arProp["test"] = "wer";
 				}
 				$arResult["CHARACTERISTICS"][] = $arProp;
 			}
@@ -42,8 +41,7 @@ if($arResult["DISPLAY_PROPERTIES"] ){
 	}
 }
 
-if( !empty( $arResult["PROPERTIES"]["LINK_PROJECTS"]["VALUE"] ) ){
+if( !empty( $arResult["PROPERTIES"]["LINK_PROJECTS"]["VALUE"] ) && in_array("LINK_PROJECTS", $arParams["PROPERTY_CODE"])){
 	$arResult["PROJECTS"] = aspro::getIBItems( $arResult["PROPERTIES"]["LINK_PROJECTS"]["VALUE"], "Y");
 }
-
 ?>
