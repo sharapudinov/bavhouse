@@ -15,18 +15,11 @@
 			<li id="<?=$this->GetEditAreaId($arItem['ID']);?>" style="background:url('<?=$img?>') center center no-repeat !important;">
 				<div class="container<?=($bOnlyImage && $bLinkOnName ? ' fa' : '')?>">
 						<div class="row <?=$arItem["PROPERTIES"]["TEXTCOLOR"]["VALUE_XML_ID"]?>">
-							<div class="col-md-8 col-sm-8 col-xs-12 bordered">
+							<div class="col-md-10 col-sm-10 col-xs-12 bordered">
 								<div class="text-rewiev">
 									<p><?=$arItem["PREVIEW_TEXT"]?></p>
 									<div class="rewiev-name"><?=$arItem["NAME"]?>, <?=$arItem["POST"]?></div>
 								</div>
-							</div>
-							<div class="col-md-3 col-sm-3 col-xs-12">				
-								<div class="image">
-										<a href="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>" class="img-inside fancybox">
-											<img src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>" alt="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>" title="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>" class="img-responsive">
-										</a>
- 								</div>
 							</div>
 						</div>
 				</div>

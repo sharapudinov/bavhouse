@@ -110,17 +110,6 @@
                                         ]
                                     ); ?>
                                 </div>
-                                <div class="skype hidden-xs">
-                                    <i class="icon icon-skype"></i>
-                                    <? $APPLICATION->IncludeFile(
-                                        SITE_DIR . "include/site-skype.php",
-                                        [],
-                                        [
-                                            "MODE" => "html",
-                                            "NAME" => "Skype",
-                                        ]
-                                    ); ?>
-                                </div>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -675,36 +664,40 @@
             </div>
         </div>
     <? endif; ?>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="styled-block main">
-                <div class="row">
-                    <div class="col-md-8 col-sm-8">
-                        <? $APPLICATION->IncludeComponent(
-                            "bitrix:main.include",
-                            "",
-                            [
-                                "AREA_FILE_SHOW" => "file",
-                                "PATH"           => SITE_DIR . "include/front-text1.php",
-                                "EDIT_TEMPLATE"  => "standard.php"
-                            ]
-                        ); ?>
-                    </div>
-                    <div class="col-md-4 col-sm-4 text-right">
-                        <? $APPLICATION->IncludeComponent(
-                            "bitrix:main.include",
-                            "",
-                            [
-                                "AREA_FILE_SHOW" => "file",
-                                "PATH"           => SITE_DIR . "include/front-text2.php",
-                                "EDIT_TEMPLATE"  => "standard.php"
-                            ]
-                        ); ?>
+
+    <div class="home-page-block">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="styled-block main">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8">
+                            <? $APPLICATION->IncludeComponent(
+                                "bitrix:main.include",
+                                "",
+                                [
+                                    "AREA_FILE_SHOW" => "file",
+                                    "PATH"           => SITE_DIR . "include/front-text1.php",
+                                    "EDIT_TEMPLATE"  => "standard.php"
+                                ]
+                            ); ?>
+                        </div>
+                        <div class="col-md-4 col-sm-4 text-right">
+                            <? $APPLICATION->IncludeComponent(
+                                "bitrix:main.include",
+                                "",
+                                [
+                                    "AREA_FILE_SHOW" => "file",
+                                    "PATH"           => SITE_DIR . "include/front-text2.php",
+                                    "EDIT_TEMPLATE"  => "standard.php"
+                                ]
+                            ); ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="row">
         <div class="col-md-12">
             <div class="row">

@@ -141,7 +141,7 @@ table.table th {
   border: 2px solid #188B30;
 }
 
-.feature-box .feature-box-icon:hover {
+.feature-box:hover .feature-box-icon{
   background-color: #188B30;
 }
 .tabs.item-views.table .title,

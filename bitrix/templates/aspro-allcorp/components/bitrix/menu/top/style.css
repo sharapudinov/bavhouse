@@ -1,3 +1,5 @@
+
+
 .bx-mac .mega-menu table, .bx-ios .mega-menu table{max-width:inherit;}
 header.menu-type-1{ height: 90px; padding: 30px 0; }
 header.menu-type-1 > .container{ margin-bottom: -34px; }
@@ -16,7 +18,7 @@ header.menu-type-2 .mega-menu table{ border-collapse: collapse; border-spacing: 
 .mega-menu a{ text-decoration: none; white-space: nowrap }
 header.menu-type-2 .mega-menu table{ width: 100%; }
 header.menu-type-2 .mega-menu table a{ padding: 12px 25px; color: white; }
-header.menu-type-1 .mega-menu table a{ padding: 10px; border-radius: 2px; }
+header.menu-type-1 .mega-menu table a{ padding: 30px 10px; border-radius: 2px; height: 66px}
 header.menu-type-1 .mega-menu table a .icon{ color: #b2bfc6; }
 
 header.menu-type-1 .mega-menu table .active a,

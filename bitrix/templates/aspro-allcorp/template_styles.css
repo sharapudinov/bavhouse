@@ -42,7 +42,7 @@ div[id^=wait_comp], .bx-core-waitwindow{display:none;}
 
 
 .top-row{font-size:12px;line-height:12px;padding:6px 0;background:#f9f9f9;}
-.top-row .info-text{font-size:0;padding:8px 0;}
+.top-row .info-text{font-size:0;padding:8px 0; float: right;}
 .top-row .info-text i{font-size:14px;margin:-1px 7px -1px 0;color:#b2bfc6;}
 .top-row .info-text .email{margin-left:0;}
 .top-row .info-text .email,.top-row .info-text .phone,.top-row .info-text .skype{display:inline-block;vertical-align:top;font-size:12px;margin-left:40px;}
@@ -51,9 +51,9 @@ div[id^=wait_comp], .bx-core-waitwindow{display:none;}
 header{clear:both;}
 header > .container{position:relative;}
 header .logo{height:90px;line-height:90px;height: 70px;padding: 16px 0px;}
-header .logo img{max-height:84px;}
+header .logo img{max-height:120px;}
 header.menu-type-1 {height: 70px;padding: 16px 0px;}
-header.menu-type-1 .logo{margin:-30px 0;position:relative;z-index:10;    padding-top: 10px;  }
+header.menu-type-1 .logo{margin:-65px 0;position:relative;z-index:10;}
 header .top-description{font-size:16px;line-height:16px;color:#97a1a7;padding:29px 0;}
 header .top-callback{padding:24px 0;float:right;}
 header .phone{height:26px;color:#777777;font-size:26px;line-height:26px;white-space:nowrap;text-align:right;float:none !important;}
@@ -147,7 +147,14 @@ span.zoom i{font-size:14px;left:0;position:relative;top:-2px;}
 .uploader .filename{overflow:hidden;display:inline-block;width:100%;white-space:nowrap;font-size:13px;color:#9aa6ae;position:relative;top:-5px;padding:9px;padding-left:138px;text-overflow:ellipsis;}
 .fancybox-overlay{z-index:8010;}
 
-.styled-block{background:url('images/background.png') #eaf0f2 0 0 no-repeat;padding:35px 58px;color:#2f383d;margin-bottom:40px;}
+.styled-block{padding:35px 58px;color:#2f383d;}
+
+.home-page-block{
+	display: block;
+	background: url("/bitrix/templates/aspro-allcorp/images/background.png") no-repeat scroll 0px 0px;
+	clear: both;
+}
+
 .styled-block > div.row{font-size:0px;}
 .styled-block > div.row p{font-size:13px;}
 .styled-block .valign{font-size:13px;}
