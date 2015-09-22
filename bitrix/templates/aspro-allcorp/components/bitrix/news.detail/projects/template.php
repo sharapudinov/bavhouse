@@ -114,6 +114,29 @@
 			</div>
 		</div>
 	<?}?>
+	<?// gallery?>
+	<?if($arResult["MORE_GALLERY"]):?>
+		<div class="wraps">
+			<h4><?=GetMessage("T_GALLERY")?></h4>
+			<div class="row galery">
+				<?foreach($arResult["MORE_GALLERY"] as $arPhoto):?>
+					<div class="col-md-4 col-sm-6">
+						<div class="item">
+							<a href="<?=$arPhoto["DETAIL"]['SRC']?>" class="fancybox" rel="gallery" target="_blank" title="<?=($arPhoto["DETAIL"]['DESCRIPTION'] ? $arPhoto["DETAIL"]['DESCRIPTION'] : $arResult["NAME"])?>">
+								<div class="info_galery">
+									<span class="icons"></span>
+									<div class="title"><?=($arPhoto["DETAIL"]['DESCRIPTION'] ? $arPhoto["DETAIL"]['DESCRIPTION'] : $arResult["NAME"])?></div>
+								</div>
+								<img src="<?=$arPhoto["PREVIEW"]['src']?>" class="img-responsive inline" alt="<?=($arPhoto["DETAIL"]['DESCRIPTION'] ? $arPhoto["DETAIL"]['DESCRIPTION'] : $arResult["NAME"])?>"/>
+							</a>
+						</div>
+					</div>
+				<?endforeach;?>
+			</div>
+		</div>
+	<?endif;?>
+
+	
 	<div class="row bottom">
 		<div class="col-md-6 back">
 			<a href="<?=$arResult["LIST_PAGE_URL"];?>" title="<?=GetMessage("BACK")?>" ><i class="icon icon-chevron-left bg"></i><?=GetMessage("BACK")?></a>
@@ -134,6 +157,7 @@
 			</div>
 		<?endif;?>
 	</div>
+
 	
 	<?// projects links?>
 	<?if($arResult["PROJECTS"]["ITEMS"]){?>
@@ -160,4 +184,5 @@
 			</div>
 		</div>
 	<?}?>
+
 </div>

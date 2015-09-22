@@ -3,7 +3,9 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetPageProperty("title", "Качественный ремонт квартир и коммерческой недвижимости настоящими профессионалами.");
 $APPLICATION->SetTitle("BavHouse.ru - Ремонт квартир и недвижимости");
 	//тестовый коммит
-?><?$APPLICATION->IncludeComponent("bitrix:news.list", "otzivi", Array(
+?>
+	<hr>
+<?$APPLICATION->IncludeComponent("bitrix:news.list", "otzivi", Array(
 	"COMPONENT_TEMPLATE" => "otzivi",
 		"IBLOCK_TYPE" => "aspro_allcorp_content",	// Тип информационного блока (используется только для проверки)
 		"IBLOCK_ID" => "9",	// Код информационного блока
