@@ -276,9 +276,9 @@
                     <div class="col-md-12">
                         <? if ($arTheme["MENU"] == "first"): ?>
                         <div class="row">
-                            <div class="col-md-3">
-                            </div>
-                            <div class="col-md-9">
+                            <!--<div class="col-md-3">
+                            </div>-->
+                            <div class="col-md-12">
                                 <? endif; ?>
                                 <nav class="mega-menu <?= $arTheme["MENU"] == 'first' ? 'pull-right' : '' ?>">
                                     <? $APPLICATION->IncludeComponent(
