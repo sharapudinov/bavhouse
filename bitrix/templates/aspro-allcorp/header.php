@@ -272,12 +272,8 @@
         </div>
         <div class="nav-main-collapse collapse">
             <div class="container maxwidth-theme">
-                <div class="row">
-                    <div class="col-md-12">
                         <? if ($arTheme["MENU"] == "first"): ?>
                         <div class="row">
-                            <!--<div class="col-md-3">
-                            </div>-->
                             <div class="col-md-12">
                                 <? endif; ?>
                                 <nav class="mega-menu <?= $arTheme["MENU"] == 'first' ? 'pull-right' : '' ?>">
@@ -305,11 +301,10 @@
                             </div>
                         </div>
                     <? endif; ?>
-                    </div>
-                </div>
             </div>
         </div>
     </header>
+    <div style="clear: both"></div>
     <div role="main" class="main">
 <? if (!CSite::InDir(SITE_DIR . 'index.php')): ?>
     <section class="page-top">
@@ -341,6 +336,7 @@
     <div class="row">
     <div class="col-md-12">
 <? else: ?>
+
     <div class="maxwidth-theme">
         <? $GLOBALS["arrFilterBanners"] = ["SECTION_CODE" => "big_banners"] ?>
         <? $APPLICATION->IncludeComponent(
@@ -404,11 +400,13 @@
             false
         ); ?>
     </div>
+
 <? endif; ?>
 <? $isMenu = $APPLICATION->GetProperty("menu"); ?>
 <? $isIndex = CSite::inDir(SITE_DIR . "index.php"); ?>
 <? if ($isMenu == "Y" && $arTheme["SIDEMENU"] == "right" && !$isIndex): ?>
     <div class="row">
+
     <div class="col-md-9">
 <? endif; ?>
 <? if ($isMenu == "Y" && $arTheme["SIDEMENU"] == "left" && !$isIndex): ?>
@@ -448,7 +446,6 @@
             ); ?>
         </div>
     </div>
-    <div class="col-md-9">
 <? endif; ?>
 <? CAllCorp::checkRestartBuffer(); ?>
 <? if ($isIndex): ?>
@@ -516,6 +513,7 @@
 		],
 		false
 	); */ ?>
+
     <? if ($arTheme["SERVICES_INDEX"] == "Y"): ?>
         <div class="row">
             <div class="col-md-12">
@@ -594,7 +592,9 @@
                 ); ?>
             </div>
         </div>
+<hr>
     <? endif; ?>
+
     <? if ($arTheme["CATALOG_INDEX"] == "Y"): ?>
         <div class="row">
             <div class="col-md-12">
@@ -663,6 +663,7 @@
                 ); ?>
             </div>
         </div>
+        <hr>
     <? endif; ?>
 
     <div class="home-page-block">
@@ -697,6 +698,7 @@
             </div>
         </div>
     </div>
+    <hr>
 
     <div class="row">
         <div class="col-md-12">
