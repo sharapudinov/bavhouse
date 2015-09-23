@@ -201,79 +201,80 @@
     <header class="<?= ($arTheme["MENU"] == "first" ? "menu-type-1" : "menu-type-2") ?>">
         <div class="container maxwidth-theme">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="row">
-                        <? if ($arTheme["MENU"] == "first"): ?>
-                            <div class="col-md-3">
-                                <div class="logo"><? $APPLICATION->IncludeFile(
-                                        SITE_DIR . "include/logo.php",
-                                        [],
-                                        [
-                                            "MODE" => "php",
-                                            "NAME" => "Logo"
-                                        ]
-                                    ); ?></div>
-                            </div>
-                            <div class="col-md-9">
-                                <button class="btn btn-responsive-nav" data-toggle="collapse"
-                                        data-target=".nav-main-collapse">
-                                    <i class="icon icon-bars"></i>
-                                </button>
-                            </div>
-                        <? elseif ($arTheme["MENU"] == "second"): ?>
-                            <div class="col-md-4">
-                                <div class="logo"><? $APPLICATION->IncludeFile(
-                                        SITE_DIR . "include/logo.php",
-                                        [],
-                                        [
-                                            "MODE" => "php",
-                                            "NAME" => "Logo"
-                                        ]
-                                    ); ?></div>
-                            </div>
-                            <div class="col-md-4 hidable">
-                                <div class="top-description">
-                                    <? $APPLICATION->IncludeFile(
-                                        SITE_DIR . "include/header-text.php",
-                                        [],
-                                        [
-                                            "MODE" => "text",
-                                            "NAME" => "Text in title",
-                                        ]
-                                    ); ?>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="top-callback clearfix hidable">
-                                    <div class="phone pull-right">
-                                        <i class="icon icon-phone"></i>
-                                        <? $APPLICATION->IncludeFile(
-                                            SITE_DIR . "include/site-phone.php",
-                                            [],
-                                            [
-                                                "MODE" => "text",
-                                                "NAME" => "Phone",
-                                            ]
-                                        ); ?>
-                                    </div>
-                                    <div class="callback pull-right" data-event="jqm"
-                                         data-param-id="<?= CCache::$arIBlocks[ SITE_ID ]["aspro_allcorp_form"]["aspro_allcorp_callback"][0] ?>"
-                                         data-name="callback"><span><?= GetMessage("S_CALLBACK") ?></span></div>
-                                </div>
-                                <button class="btn btn-responsive-nav" data-toggle="collapse"
-                                        data-target=".nav-main-collapse">
-                                    <i class="icon icon-bars"></i>
-                                </button>
-                            </div>
-                        <? endif; ?>
+                <? if ($arTheme["MENU"] == "first"): ?>
+                    <div class="col-md-3">
+                        <div class="logo"><? $APPLICATION->IncludeFile(
+                                SITE_DIR . "include/logo.php",
+                                [],
+                                [
+                                    "MODE" => "php",
+                                    "NAME" => "Logo"
+                                ]
+                            ); ?></div>
                     </div>
-                </div>
+                    <div class="col-md-9">
+                        <button class="btn btn-responsive-nav" data-toggle="collapse"
+                                data-target=".nav-main-collapse">
+                            <i class="icon icon-bars"></i>
+                        </button>
+                    </div>
+                <? elseif ($arTheme["MENU"] == "second"): ?>
+                    <div class="col-md-4">
+                        <div class="logo"><? $APPLICATION->IncludeFile(
+                                SITE_DIR . "include/logo.php",
+                                [],
+                                [
+                                    "MODE" => "php",
+                                    "NAME" => "Logo"
+                                ]
+                            ); ?></div>
+                    </div>
+                    <div class="col-md-4 hidable">
+                        <div class="top-description">
+                            <? $APPLICATION->IncludeFile(
+                                SITE_DIR . "include/header-text.php",
+                                [],
+                                [
+                                    "MODE" => "text",
+                                    "NAME" => "Text in title",
+                                ]
+                            ); ?>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="top-callback clearfix hidable">
+                            <div class="phone pull-right">
+                                <i class="icon icon-phone"></i>
+                                <? $APPLICATION->IncludeFile(
+                                    SITE_DIR . "include/site-phone.php",
+                                    [],
+                                    [
+                                        "MODE" => "text",
+                                        "NAME" => "Phone",
+                                    ]
+                                ); ?>
+                            </div>
+                            <div class="callback pull-right" data-event="jqm"
+                                 data-param-id="<?= CCache::$arIBlocks[ SITE_ID ]["aspro_allcorp_form"]["aspro_allcorp_callback"][0] ?>"
+                                 data-name="callback"><span><?= GetMessage("S_CALLBACK") ?></span></div>
+                        </div>
+                        <button class="btn btn-responsive-nav" data-toggle="collapse"
+                                data-target=".nav-main-collapse">
+                            <i class="icon icon-bars"></i>
+                        </button>
+                    </div>
+                <? endif; ?>
             </div>
         </div>
+
         <div class="nav-main-collapse collapse">
             <div class="container maxwidth-theme">
+                <div class="row">
+                    <div class="col-md-12">
                         <? if ($arTheme["MENU"] == "first"): ?>
                         <div class="row">
+                            <div class="col-md-3">
+                            </div>
                             <div class="col-md-12">
                                 <? endif; ?>
                                 <nav class="mega-menu <?= $arTheme["MENU"] == 'first' ? 'pull-right' : '' ?>">
@@ -301,6 +302,8 @@
                             </div>
                         </div>
                     <? endif; ?>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -592,7 +595,7 @@
                 ); ?>
             </div>
         </div>
-<hr>
+        <hr>
     <? endif; ?>
 
     <? if ($arTheme["CATALOG_INDEX"] == "Y"): ?>

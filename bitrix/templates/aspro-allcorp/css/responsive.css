@@ -12,7 +12,7 @@
 @media (max-width:991px){
 	.body_media{top:1px;} /* do not remove this hack! )) */
 	.mega-menu ul.nav li a{ color: white; }
-	header .nav-main-collapse{ width: 100%; overflow: hidden; top: 60px; position: relative; background: #171717; max-height: none; z-index: 10; }
+	header .nav-main-collapse{ width: 100%; overflow: hidden; top: 80px; position: relative; background: #171717; max-height: none; z-index: 10; }
 	header .nav-main-collapse.collapse{ display: none !important; }
 	header .nav-main-collapse.in{ display: block !important; }
 	header.menu-type-2 .nav-main-collapse{ top: 0; }
