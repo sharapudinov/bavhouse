@@ -307,6 +307,7 @@
             </div>
         </div>
     </header>
+
     <div style="clear: both"></div>
     <div role="main" class="main">
 <? if (!CSite::InDir(SITE_DIR . 'index.php')): ?>
@@ -335,6 +336,7 @@
             </div>
         <? endif; ?>
     </section>
+
     <div class="container maxwidth-theme">
     <div class="row">
     <div class="col-md-12">
@@ -403,7 +405,6 @@
             false
         ); ?>
     </div>
-
 <? endif; ?>
 <? $isMenu = $APPLICATION->GetProperty("menu"); ?>
 <? $isIndex = CSite::inDir(SITE_DIR . "index.php"); ?>
@@ -449,7 +450,10 @@
             ); ?>
         </div>
     </div>
+    <div class="col-md-9">
 <? endif; ?>
+
+
 <? CAllCorp::checkRestartBuffer(); ?>
 <? if ($isIndex): ?>
     <div class="container maxwidth-theme">
