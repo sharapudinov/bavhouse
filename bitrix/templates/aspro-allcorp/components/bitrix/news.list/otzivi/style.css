@@ -1,5 +1,5 @@
 .top-slider.flexslider{border:0;border-radius:0;box-shadow:none;}
-.top-slider.flexslider .slides > li{height:400px;font-size:16px;line-height:20px;color:white;}
+.top-slider.flexslider .slides > li.otzivi{height:auto;font-size:16px;line-height:20px;color:white;}
 .top-slider.flexslider .slides > li .container{padding:0 30px;}
 .top-slider.flexslider .slides > li .container.fa, .top-slider.flexslider .slides > li .container.fa .row, .top-slider.flexslider .slides > li .container.fa a{width:100%;height:100%;display:block;}
 .top-slider.flexslider .slides a:not(.btn){font-size:16px;line-height:20px;color:white;}
@@ -37,11 +37,9 @@ border:1px solid #555;
 -moz-box-shadow:    4px 4px 6px rgba(50, 50, 50, 0.75);
 box-shadow:         4px 4px 6px rgba(50, 50, 50, 0.75);
 }
-.rew-btn{
-position: relative;
-z-index: 99;
-left: 44%;
-top: 347px;
+div.otzivi {
+	text-align: center;
+	margin-top: 20px;
 }
 @media (max-width:678px){
 	.top-slider .text .inner{padding-top:30px;}
