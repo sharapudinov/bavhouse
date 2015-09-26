@@ -9,6 +9,15 @@ $SectionID = CCache::CIblockSection_GetList(array("CACHE" => array("TAG" => CCac
 $arSubSectionFilter = CAllCorp::GetCurrentSectionSubSectionFilter($arResult["VARIABLES"], $arParams, $arSectionID);
 $arSubSections = CCache::CIblockSection_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag($arParams["IBLOCK_ID"]), "MULTI" => "Y")), $arSubSectionFilter, false, array("ID"));
 ?>
+<?$APPLICATION->IncludeComponent(
+	"bitrix:main.include",
+	"",
+	Array(
+		"AREA_FILE_SHOW" => "file",
+		"PATH" => SITE_DIR."include/services.php",
+		"EDIT_TEMPLATE" => ""
+	)
+);?>
 <?if(!$SectionID):?>
 	<div class="alert alert-warning"><?=GetMessage("SECTION_NOTFOUND")?></div>
 <?else:?>
