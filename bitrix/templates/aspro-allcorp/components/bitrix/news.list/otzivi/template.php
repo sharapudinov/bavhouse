@@ -34,7 +34,7 @@
                         style="background:url('<?= $img ?>') center center no-repeat !important;" class="otzivi">
                         <div class="container<?= ($bOnlyImage && $bLinkOnName ? ' fa' : '') ?>">
                             <div class="row <?= $arItem["PROPERTIES"]["TEXTCOLOR"]["VALUE_XML_ID"] ?>">
-                                <div class="col-md-10 col-sm-10 col-xs-12 bordered">
+                                <div class="col-md-11 col-sm-11 col-xs-12 bordered">
                                     <div class="text-rewiev">
                                         <p><?= $arItem["PREVIEW_TEXT"] ?></p>
 
