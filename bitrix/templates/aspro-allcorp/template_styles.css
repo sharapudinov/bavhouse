@@ -417,7 +417,10 @@ header.fixed {
     position: fixed;
     top: 0;
 }
-.header-zaglushka{
+.header-zaglushka {
     height: 70px;
     display: none;
 }
+
+.test{}
+

@@ -27,16 +27,18 @@
 .top-slider.flexslider .row.dark a.btn.btn-transparent{border:1px solid #999;color:#666;}
 .top-slider.flexslider .row.dark a.btn.btn-transparent:hover{border:1px solid #fff;color:#fff;}
 .top-slider .text-rewiev{color: #555; height:235px; border-left: 7px solid #FFF; margin: 35px 0px 0px 75px;}
+.top-slider .text-rewie:before {
+	position: absolute;
+	top: 24px;
+	left: 20px;
+	font-family: FontAwesome;
+	content: "?";
+	font-size: 40px;
+	line-height: 36px;
+}
 .top-slider .text-rewiev p{margin-left: 30px;}
 .top-slider .rewiev-name{margin: 10px 30px 0 0; float: right;}
 .top-slider .image{margin-top: 80px; height:200px; width:200px;}
-.top-slider .image img{
-border-radius: 50%;
-border:1px solid #555;
--webkit-box-shadow: 4px 4px 6px rgba(50, 50, 50, 0.75);
--moz-box-shadow:    4px 4px 6px rgba(50, 50, 50, 0.75);
-box-shadow:         4px 4px 6px rgba(50, 50, 50, 0.75);
-}
 div.otzivi {
 	text-align: center;
 	margin-top: 20px;
