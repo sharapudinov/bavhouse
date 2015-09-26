@@ -4,6 +4,7 @@ $APPLICATION->SetTitle("Услуги");?>
 	"IBLOCK_TYPE" => "aspro_allcorp_content",
 	"IBLOCK_ID" => "12",
 	"NEWS_COUNT" => "20",
+	"COUNT_IN_LINE"=>2,
 	"USE_SEARCH" => "N",
 	"USE_RSS" => "N",
 	"USE_RATING" => "N",

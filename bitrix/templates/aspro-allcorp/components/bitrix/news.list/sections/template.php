@@ -50,9 +50,9 @@
 									</a>
 								</div>
 							<?$imagePart = ob_get_clean();?>
-								
-							<?if($arParams["VIEW_TYPE"] == "list"):?>
-								<?if($arParams["IMAGE_POSITION"] == "left"):?>
+
+									<?if($arParams["VIEW_TYPE"] == "list"):?>
+										<?if($arParams["IMAGE_POSITION"] == "left"):?>
 									<div class="col-md-4 col-sm-5"><?=$imagePart?></div>
 									<div class="col-md-8 col-sm-7"><div class="text"><?=$textPart?></div></div>
 								<?elseif($arParams["IMAGE_POSITION"] == "right"):?>
