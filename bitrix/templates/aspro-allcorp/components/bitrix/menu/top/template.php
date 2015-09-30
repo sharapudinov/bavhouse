@@ -1,4 +1,6 @@
 <?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
+
+//test_dump($arResult)
 ?>
 
 <?if( !empty( $arResult ) ){?>
@@ -6,6 +8,7 @@
 		<table>
 			<tr>
 				<?foreach( $arResult as $arItem ){?>
+
 					<td class="<?if( !empty( $arItem["CHILD"] ) ){?>dropdown<?}?> <?if( $arItem["SELECTED"] ){?>active<?}?>">
 						<div class="wrap"><a <?if( !empty( $arItem["CHILD"] ) ){?>class="dropdown-toggle"<?}?> href="<?=$arItem["LINK"]?>">
 							<?=$arItem["TEXT"]?>
@@ -14,15 +17,15 @@
 						<?if( !empty( $arItem["CHILD"] ) ){?>
 							<ul class="dropdown-menu">
 								<?foreach( $arItem["CHILD"] as $arSubItem ){?>
-									<li <?=!empty( $arSubItem["CHILD"] ) ? 'class="dropdown-submenu"' : ''?>>
+									<li <?/*=!empty( $arSubItem["CHILD"] ) ? 'class="dropdown-submenu"' : ''*/?>>
 										<a href="<?=$arSubItem["LINK"]?>"><?=$arSubItem["TEXT"]?></a>
-										<?if( !empty( $arSubItem["CHILD"] ) ){?>
+										<?/*if( !empty( $arSubItem["CHILD"] ) ){*/?><!--
 											<ul class="dropdown-menu">
-												<?foreach( $arSubItem["CHILD"] as $arSubSubItem ){?>
-													<li><a href="<?=$arSubSubItem["LINK"]?>"><?=$arSubSubItem["TEXT"]?></a></li>
-												<?}?>
+												<?/*foreach( $arSubItem["CHILD"] as $arSubSubItem ){*/?>
+													<li><a href="<?/*=$arSubSubItem["LINK"]*/?>"><?/*=$arSubSubItem["TEXT"]*/?></a></li>
+												<?/*}*/?>
 											</ul>
-										<?}?>
+										--><?/*}*/?>
 									</li>
 								<?}?>
 							</ul>

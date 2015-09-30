@@ -5,11 +5,10 @@
 $arItemFilter = CAllCorp::GetCurrentSectionElementFilter($arResult["VARIABLES"], $arParams);
 $arSectionFilter = CAllCorp::GetCurrentSectionFilter($arResult["VARIABLES"], $arParams);
 $itemsCnt = CCache::CIblockElement_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag($arParams["IBLOCK_ID"]))), $arItemFilter, array());
-$SectionID = CCache::CIblockSection_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag($arParams["IBLOCK_ID"]), "MULTI" => "N", "RESULT" => array("ID"))), $arSectionFilter, false, array("ID"), true);
+$SectionID = CCache::CIblockSection_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag($arParams["IBLOCK_ID"]), "MULTI" => "N", "RESULT" => array("IBLOCK_ID","ID","UF_INFOTEXT"))), $arSectionFilter, false, array("ID","IBLOCK_ID","UF_INFOTEXT"), true);
 $arSubSectionFilter = CAllCorp::GetCurrentSectionSubSectionFilter($arResult["VARIABLES"], $arParams, $arSectionID);
-$arSubSections = CCache::CIblockSection_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag($arParams["IBLOCK_ID"]), "MULTI" => "Y")), $arSubSectionFilter, false, array("ID"));
-?>
-<?$APPLICATION->IncludeComponent(
+$arSubSections = CCache::CIblockSection_GetList(array("CACHE" => array("TAG" => CCache::GetIBlockCacheTag($arParams["IBLOCK_ID"]), "MULTI" => "Y")), $arSubSectionFilter, false, array("ID")); ?>
+<?/*$APPLICATION->IncludeComponent(
 	"bitrix:main.include",
 	"",
 	Array(
@@ -17,7 +16,12 @@ $arSubSections = CCache::CIblockSection_GetList(array("CACHE" => array("TAG" => 
 		"PATH" => SITE_DIR."include/services.php",
 		"EDIT_TEMPLATE" => ""
 	)
-);?>
+);*/?>
+<?if(strlen($SectionID["UF_INFOTEXT"])){?>
+	<div class="description">
+		<p><?=$SectionID["UF_INFOTEXT"]?></p>
+	</div>
+<?}?>
 <?if(!$SectionID):?>
 	<div class="alert alert-warning"><?=GetMessage("SECTION_NOTFOUND")?></div>
 <?else:?>

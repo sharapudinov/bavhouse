@@ -288,12 +288,12 @@
                                             "MENU_CACHE_USE_GROUPS" => "N",
                                             "MENU_CACHE_GET_VARS"   => [
                                             ],
-                                            "MAX_LEVEL"             => "3",
+                                            "MAX_LEVEL"             => "2",
                                             "CHILD_MENU_TYPE"       => "top_child",
                                             "USE_EXT"               => "Y",
                                             "DELAY"                 => "N",
                                             "ALLOW_MULTI_SELECT"    => "N",
-                                            "COUNT_ITEM"            => "6"
+                                            "COUNT_ITEM"            => "5"
                                         ],
                                         false
                                     ); ?>
