@@ -6,9 +6,9 @@ $APPLICATION->SetTitle("Цены на ремонт");?><div><b>Прайс-лис
   <br>
 </div>
 <?$APPLICATION->IncludeComponent(
-	"bitrix:news",
-	"items-list",
-	Array(
+	"bitrix:news", 
+	"items-list", 
+	array(
 		"IBLOCK_TYPE" => "aspro_allcorp_content",
 		"IBLOCK_ID" => "27",
 		"NEWS_COUNT" => "25",
@@ -18,9 +18,9 @@ $APPLICATION->SetTitle("Цены на ремонт");?><div><b>Прайс-лис
 		"USE_CATEGORIES" => "N",
 		"USE_FILTER" => "N",
 		"SORT_BY1" => "ID",
-		"SORT_ORDER1" => "DESC",
-		"SORT_BY2" => "SORT",
-		"SORT_ORDER2" => "ASC",
+		"SORT_ORDER1" => "ASC",
+		"SORT_BY2" => "ID",
+		"SORT_ORDER2" => "DESC",
 		"CHECK_DATES" => "Y",
 		"SEF_MODE" => "Y",
 		"SEF_FOLDER" => "/info/faq/",
@@ -39,16 +39,33 @@ $APPLICATION->SetTitle("Цены на ремонт");?><div><b>Прайс-лис
 		"USE_PERMISSIONS" => "N",
 		"PREVIEW_TRUNCATE_LEN" => "",
 		"LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
-		"LIST_FIELD_CODE" => array(0=>"PREVIEW_TEXT",1=>"PREVIEW_PICTURE",2=>"",),
-		"LIST_PROPERTY_CODE" => array(0=>"",1=>"TITLE_BUTTON",2=>"LINK_BUTTON",3=>"",),
+		"LIST_FIELD_CODE" => array(
+			0 => "PREVIEW_TEXT",
+			1 => "PREVIEW_PICTURE",
+			2 => "",
+		),
+		"LIST_PROPERTY_CODE" => array(
+			0 => "",
+			1 => "TITLE_BUTTON",
+			2 => "LINK_BUTTON",
+			3 => "",
+		),
 		"HIDE_LINK_WHEN_NO_DETAIL" => "Y",
 		"DISPLAY_NAME" => "Y",
 		"META_KEYWORDS" => "-",
 		"META_DESCRIPTION" => "-",
 		"BROWSER_TITLE" => "-",
 		"DETAIL_ACTIVE_DATE_FORMAT" => "d.m.Y",
-		"DETAIL_FIELD_CODE" => array(0=>"",1=>"",),
-		"DETAIL_PROPERTY_CODE" => array(0=>"",1=>"TITLE_BUTTON",2=>"LINK_BUTTON",3=>"",),
+		"DETAIL_FIELD_CODE" => array(
+			0 => "",
+			1 => "",
+		),
+		"DETAIL_PROPERTY_CODE" => array(
+			0 => "",
+			1 => "TITLE_BUTTON",
+			2 => "LINK_BUTTON",
+			3 => "",
+		),
 		"DETAIL_DISPLAY_TOP_PAGER" => "N",
 		"DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",
 		"DETAIL_PAGER_TITLE" => "Страница",
@@ -74,8 +91,11 @@ $APPLICATION->SetTitle("Цены на ремонт");?><div><b>Прайс-лис
 		"PAGER_BASE_LINK_ENABLE" => "N",
 		"SHOW_404" => "N",
 		"MESSAGE_404" => "",
-		"SEF_URL_TEMPLATES" => array("news"=>"","section"=>"","detail"=>"",),
-		"VARIABLE_ALIASES" => Array(
+		"SEF_URL_TEMPLATES" => array(
+			"news" => "",
+			"section" => "",
+			"detail" => "",
 		)
-	)
+	),
+	false
 );?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

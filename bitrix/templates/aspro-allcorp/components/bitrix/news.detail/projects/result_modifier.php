@@ -19,7 +19,7 @@ if( $arParams["DISPLAY_PICTURE"] != "N" ){
 			);
 		}
 	}
-	foreach($arResult["DISPLAY_PROPERTIES"]["MORE_PHOTOS"]["VALUE"] as $img){
+	foreach($arResult["PROPERTIES"]["MORE_PHOTOS"]["VALUE"] as $img){
 		$arResult["MORE_GALLERY"][] = array(
 			"DETAIL" => CFile::GetFileArray($img),
 			"PREVIEW" => CFile::ResizeImageGet($img, array("width" => 325, "height" => 230), BX_RESIZE_IMAGE_EXACT, true),
