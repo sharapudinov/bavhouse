@@ -133,6 +133,13 @@ $(window).resize(function(){
 })
 
 $(document).ready(function(){
+
+	$('#about').on('click',function(e){
+		e.preventDefault();
+		$('div.about').addClass('about_opened');
+		$('div.about').removeClass('about');
+	});
+
 	$.extend( $.validator.messages, {
 		required: BX.message("JS_REQUIRED"),
 		email: BX.message("JS_FORMAT"),
@@ -401,4 +408,5 @@ $(document).ready(function(){
 			$('header').removeClass('fixed');
 		}
 	})
+
 })

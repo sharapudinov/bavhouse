@@ -10,7 +10,7 @@
 
 body{ background-color: white; color: #555555; font: 13px/20px "Open Sans", Arial, sans-serif; }
 a{ text-decoration: underline; outline: none !important; }
-h1,h2,h3,h4,h5,h6{ letter-spacing: -1px; margin: 0; font-weight: 300; margin: 0 0 15px 0; }
+h1,h2,h3,h4,h5,h6{ letter-spacing: -1px; margin: 0; font-weight: 300; margin: 20px 0 15px 0; }
 h1{ font-size: 36px; line-height: 30px; }
 h2{ font-size: 30px; line-height: 35px; }
 h3{ font-size: 28px; letter-spacing: normal; line-height: 36px; }
@@ -60,3 +60,11 @@ li{ line-height: 24px; }
 .include_module_error {margin: 0 auto;text-align: center;}
 .include_module_error img {max-width: 100%;}
 .include_module_error p {color: #636363;font-size: 14px;line-height: 20px;margin-top: 0;}
+
+.about {
+    height: 350px;
+    overflow-y: hidden;
+}
+.about_opened {
+    height: auto;
+}
