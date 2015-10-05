@@ -31,12 +31,12 @@
 									<a href="<?=$arSection["SECTION_PAGE_URL"]?>"><?=$arSection["NAME"]?></a>
 								</div>
 								
-								<?// section info text?>
-								<?if(strlen($arSection["UF_INFOTEXT"])){?>
+								<?/*// section info text*/?><!--
+								<?/*if(strlen($arSection["UF_INFOTEXT"])){*/?>
 									<div class="description">
-										<p><?=$arSection["UF_INFOTEXT"]?></p>
+										<p><?/*=$arSection["UF_INFOTEXT"]*/?></p>
 									</div>
-								<?}?>
+								--><?/*}*/?>
 							<?$textPart = ob_get_clean();?>
 								
 							<?ob_start();?>
