@@ -1,11 +1,14 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");?>
-<?$id = isset( $_REQUEST["id"] ) ? $_REQUEST["id"] : 1;
+<?
+$id = (isset($_REQUEST["id"]) ? $_REQUEST["id"] : false);
 $captcha = COption::GetOptionString("aspro.allcorp", "USE_CAPTCHA_FORM");
+$isCallBack = $id == CCache::$arIBlocks[SITE_ID]["aspro_allcorp_form"]["aspro_allcorp_callback"][0];
+$successMessage = ($isCallBack ? "<p>Наш менеджер перезвонит вам в ближайшее время.</p><p>Спасибо за ваше обращение!</p>" : "Спасибо! Ваше сообщение отправлено!");
 ?>
 <span class="jqmClose top-close icon icon-times"></span>
 <?$APPLICATION->IncludeComponent(
-	"aspro:form",
-	$id == 17 ? "callback" : "popup",
+	"aspro:form.allcorp",
+	$isCallBack ? "callback" : "popup",
 	Array(
 		"IBLOCK_TYPE" => "aspro_allcorp_form",
 		"IBLOCK_ID" => $id,
@@ -18,7 +21,7 @@ $captcha = COption::GetOptionString("aspro.allcorp", "USE_CAPTCHA_FORM");
 		"CACHE_TIME" => "100000",
 		"AJAX_OPTION_ADDITIONAL" => "",
 		//"IS_PLACEHOLDER" => "Y",
-		"SUCCESS_MESSAGE" => $id == 17 ? "<p>Наш менеджер перезвонит вам в ближайшее время.</p><p>Спасибо за ваше обращение!</p>" : "Спасибо! Ваше сообщение отправлено!",
+		"SUCCESS_MESSAGE" => $successMessage,
 		"SEND_BUTTON_NAME" => "Отправить",
 		"SEND_BUTTON_CLASS" => "btn btn-primary",
 		"DISPLAY_CLOSE_BUTTON" => "Y",
