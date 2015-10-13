@@ -31,22 +31,18 @@
             ?>
             <li id="<?= $this->GetEditAreaId($arItem['ID']); ?>"
                 style="background:url('<?= $img ?>') center center no-repeat !important;">
-                <div class="container<?= ($bOnlyImage && $bLinkOnName ? ' fa' : '') ?>">
+                <div class="<?= ($bOnlyImage && $bLinkOnName ? ' fa' : '') ?>">
                     <div class="row <?= $arItem["PROPERTIES"]["TEXTCOLOR"]["VALUE_XML_ID"] ?>">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="col-md-6 col-sm-12 col-xs-12">
                                 <? $img = CFile::ResizeImageGet(
                                     $arItem["PREVIEW_PICTURE"],
                                     [
-                                        'width'  => 500,
-                                        'height' => 250
+                                        'width'  => 555,
+                                        'height' => 300
                                     ],
                                     BX_RESIZE_IMAGE_EXACT
                                 ) ?>
                                 <img src="<?= $img["src"] ?>" alt="<?= $arItem["PREVIEW_PICTURE"]["ALT"] ?>"
-                                     title="<?= $arItem["PREVIEW_PICTURE"]["ALT"] ?>" class="img-responsive">
-                            </div>
-                        </div>
+                                     title="<?= $arItem["PREVIEW_PICTURE"]["ALT"] ?>" class="col-md-12 img-responsive">
                     </div>
                 </div>
             </li>
@@ -57,10 +53,12 @@
     $(document).ready(function () {
         $('.fotogallary').flexslider({
             animation: "slide",
-            controlNav: true,
+            slideshowSpeed: 3000,
+            controlNav: false,
             touch: true,
             animationLoop: true,
             slideshow: true,
+            directionNav: true,
         });
     })
 </script>

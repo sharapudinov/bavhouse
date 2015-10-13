@@ -6,6 +6,8 @@
      * Time: 15:39
      */
 
+    define("LOG_FILENAME",'log.txt');
+
 function test_dump($arg){
 
     global $USER;

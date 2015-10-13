@@ -1,0 +1,18 @@
+.fotogallary .flex-direction-nav a.flex-next {
+    color: white;
+    opacity: 10;
+    right: 30px;
+    margin-top: auto;
+    text-align: right;
+}
+.fotogallary .flex-direction-nav a.flex-prev {
+    color: white;
+    opacity: 10;
+    left: 30px;
+    margin-top: auto;
+    text-align: right;
+}
+
+.fotogallary .img-responsive{
+    width: 100% !important;
+}
