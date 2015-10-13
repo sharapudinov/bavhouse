@@ -65,6 +65,19 @@ li{ line-height: 24px; }
     height: 350px;
     overflow-y: hidden;
 }
+
+.about h1{
+    font-size: 28px;
+    letter-spacing: normal;
+    line-height: 36px;
+}
+
 .about_opened {
     height: auto;
+}
+
+.heading-block{
+    font-size: 28px;
+    letter-spacing: normal;
+    line-height: 36px;
 }

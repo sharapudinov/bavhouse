@@ -157,6 +157,11 @@ span.zoom i{font-size:14px;left:0;position:relative;top:-2px;}
 
 .styled-block > div.row{font-size:0px;}
 .styled-block > div.row p{font-size:13px;}
+.styled-block > div.row .heading-block{
+    font-size: 28px;
+    letter-spacing: normal;
+    line-height: 36px;
+}
 .styled-block .valign{font-size:13px;}
 .styled-block.main .row > div{font-size:0px;vertical-align:middle;float:none;display:inline-block;}
 .valign{float:none;display:inline-block;vertical-align:middle;}
