@@ -64,7 +64,6 @@ header a.logo{
 }
 
 
-
 .top-row{font-size:12px;line-height:12px;padding:6px 0;background:#f9f9f9;}
 .top-row .info-text{font-size:0;padding:8px 0; float: right;}
 .top-row .info-text i{font-size:14px;margin:-1px 7px -1px 0;color:#b2bfc6;}
@@ -182,6 +181,8 @@ span.zoom i{font-size:14px;left:0;position:relative;top:-2px;}
 .styled-block > div.row p{font-size:13px;}
 .styled-block > div.row .heading-block{
     font-size: 28px;
+    letter-spacing: normal;
+    line-height: 36px;
 }
 .styled-block .valign{font-size:13px;}
 .styled-block.main .row > div{font-size:0px;vertical-align:middle;float:none;display:inline-block;}
@@ -238,8 +239,6 @@ span.zoom i{font-size:14px;left:0;position:relative;top:-2px;}
 .item-views.table .item .image{border-bottom:1px solid #D7DEE3;/*min-height:218px;*/padding:30px 20px;text-align:center;}
 .item-views.table .item .image img{display:inline-block;max-height: 100%;max-width: 100%;vertical-align:middle;}
 .item-views .item .description { font-size: 12px; line-height: 20px; }
-
-.cat-desc{margin-top: 20px;}
 
 /* DETAIL - base class styles for all news.detail templates */
 .detail{margin-bottom:25px;}
