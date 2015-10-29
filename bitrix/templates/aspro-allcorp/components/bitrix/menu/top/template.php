@@ -8,7 +8,6 @@
 		<table>
 			<tr>
 				<?foreach( $arResult as $arItem ){?>
-
 					<td class="<?if( !empty( $arItem["CHILD"] ) ){?>dropdown<?}?> <?if( $arItem["SELECTED"] ){?>active<?}?>">
 						<div class="wrap"><a <?if( !empty( $arItem["CHILD"] ) ){?>class="dropdown-toggle"<?}?> href="<?=$arItem["LINK"]?>">
 							<?=$arItem["TEXT"]?>

@@ -1,1 +1,1 @@
-<a href="<?=SITE_DIR?>"><img src="<?=SITE_TEMPLATE_PATH?>/themes/<?=$theme?>/images/logo.png" alt="<?=$fields["SITE_NAME"]?>" /></a>
+<a class="logo" style='background-image: url("<?=SITE_TEMPLATE_PATH?>/images/logo.png");' href="<?=SITE_DIR?>"></a>
