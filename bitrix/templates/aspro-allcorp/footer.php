@@ -136,6 +136,7 @@
 								);?>
 							</div>
 						</div>
+						<div id="bx-composite-banner"></div>
 					</div>
 					<div class="col-md-3">
 						<div class="info">

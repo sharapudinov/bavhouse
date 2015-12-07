@@ -112,6 +112,3 @@ button.btn-responsive-nav:hover,
 button.btn-responsive-nav:active,
 button.btn-responsive-nav:focus{ color: #CCC; }
 
-div.nav-main-collapse {
-    top: 90px;
-}

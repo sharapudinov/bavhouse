@@ -1,6 +1,6 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
 <? $this->setFrameMode(true); ?>
-<h3>Лучшие работы</h3>
+<h3>Фотогаллерея</h3>
 <div class="fotogallary"
      data-plugin-options='{"animation": "slide", "directionNav": true, "animationLoop": true, "slideshow": true, "touch" : true, "controlNav" :true}'>
     <ul class="slides">

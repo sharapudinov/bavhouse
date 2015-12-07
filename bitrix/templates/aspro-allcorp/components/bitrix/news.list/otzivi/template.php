@@ -38,7 +38,7 @@
                                     <div class="text-rewiev">
                                         <p><?= $arItem["PREVIEW_TEXT"] ?></p>
 
-                                        <div class="rewiev-name"><?= $arItem["NAME"] ?>, <?= $arItem["POST"] ?></div>
+                                        <div class="rewiev-name"><?= $arItem["NAME"] ?></div>
                                     </div>
                                 </div>
                             </div>

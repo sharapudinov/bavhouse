@@ -1,7 +1,7 @@
 <?
 define("DBPersistent", false);
 $DBType = "mysql";
-$DBHost = "localhost";
+$DBHost = "mysql.b2120.dhpage.net";
 $DBLogin = "b2120-bavhouse";
 $DBPassword = "dxCrsdAxHHWgYLx6";
 $DBName = "b2120-bavhouse";
@@ -24,5 +24,6 @@ define("BX_FILE_PERMISSIONS", 0644);
 define("BX_DIR_PERMISSIONS", 0755);
 @umask(~BX_DIR_PERMISSIONS);
 define("BX_DISABLE_INDEX_PAGE", true);
+    define("BX_COMPOSITE_DEBUG", true);
     define('LOG_FILENAME',$_SERVER["DOCUMENT_ROOT"].'/log.txt');
 ?>

@@ -14,9 +14,10 @@
         <? global $APPLICATION; ?>
         <? IncludeTemplateLangFile(__FILE__); ?>
         <title><? $APPLICATION->ShowTitle() ?></title>
+        <meta name="google-site-verification" content="UsxYIEa-fx4SFNJWeqOmh8354wUld1UsNvl_lR4CzGg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link
-            href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext'
+            href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext'
             rel='stylesheet' type='text/css'>
         <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH . '/css/bootstrap.css'); ?>
         <? $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH . '/css/fonts/font-awesome/css/font-awesome.css'); ?>
@@ -201,7 +202,7 @@
     <header class="<?= ($arTheme["MENU"] == "first" ? "menu-type-1" : "menu-type-2") ?>">
              <div class="container maxwidth-theme">
             <div class="row">
-                <div class="col-md-3 col-sm-4 col-xs-4">
+                <div class="col-md-3 col-sm-4 col-xs-5">
                     <? $APPLICATION->IncludeFile(
                         SITE_DIR . "include/logo.php",
                         [],

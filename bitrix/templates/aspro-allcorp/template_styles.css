@@ -42,7 +42,7 @@ header a.logo{
     display: block;
     background-size: 100%;
     background-repeat: no-repeat;
-    margin-top: -20px;
+    margin-top: -25px;
 }
 @media (min-width: 998px) {
     header a.logo {
@@ -55,12 +55,22 @@ header a.logo{
 }
 @media (max-width: 998px) {
     header a.logo{
-        height: 65px;
+        height: 80px;
     }
     header.menu-type-1{
         height: 55px;
     }
     
+}
+@media (max-width: 768px) {
+    header a.logo{
+        margin-top: -15px;
+        height: 65px;
+    }
+    header.menu-type-1{
+        height: 55px;
+    }
+
 }
 
 
